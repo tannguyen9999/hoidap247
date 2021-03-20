@@ -42,6 +42,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "export":"npm run build && next export && mv out _static"
   }
 }
