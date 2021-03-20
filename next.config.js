@@ -9,8 +9,13 @@ module.exports = withPlugins([
     
     {
       /* config for next-optimized-images */
-      withImages
-    }
+      withImages,
+      env: {
+        api: 'http://api.vietfunnels.com/api',
+      },
+      
+    },
+    
   ]
 
   // your other plugins here

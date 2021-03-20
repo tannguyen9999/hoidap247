@@ -4,8 +4,11 @@ import React from "react";
 import Header from '../src/ui/Header'
 import Head from "next/head";
 import "../assets/style.css"
+import cookies from 'next-cookies'
 
-function MyApp({ Component, pageProps }) {
+
+
+function MyApp({ Component, pageProps,isLogin }) {
   return (
     <React.Fragment>
       <Head>
@@ -19,7 +22,7 @@ function MyApp({ Component, pageProps }) {
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,800;1,400&display=swap" rel="stylesheet"></link>
       </Head>
       <ThemeProvider theme = {Theme}>
-      <Header {...pageProps}></Header>
+      <Header isLog={isLogin} ></Header>
         <Component
           {...pageProps}
         />
@@ -28,6 +31,30 @@ function MyApp({ Component, pageProps }) {
     </React.Fragment>
   );
 }
+
+MyApp.getInitialProps = async ({ Component, ctx }) => {
+  const allCookies = cookies(ctx);
+  let isLogin = false;
+
+       
+  try {
+    if(allCookies.token == 'a'){
+      isLogin = true;
+    }
+  } catch (error) {
+    
+  }
+  return {
+    isLogin:isLogin,
+    pageProps: {
+      ...(Component.getInitialProps
+        ? await Component.getInitialProps(ctx)
+        : {}),
+    },
+  }
+  
+}
+
 
 
 export default MyApp

@@ -16,6 +16,9 @@ import systemAvatar from "../assets/images/system_avatar.png"
 import backHeader from "../assets/images/back_header.png"
 import iconSearchMini from "../assets/images/icon_search.png"
 import {getCookieFromBrowser} from "../util/cookies"
+import productApi from '../api/productApi'
+import PropTypes from 'prop-types';
+
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     height: "52px",
@@ -29,8 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const ButtonAppBar = ({isLogin, classes })=> {
-  
+const ButtonAppBar = ({ classes,isLog })=> {
   const token = getCookieFromBrowser('token')
  
   const classesTheme = useStyles();
@@ -43,8 +45,12 @@ const ButtonAppBar = ({isLogin, classes })=> {
       
     } 
   ) 
-  function hanldeOpenNav(){
-    console.log(openNav)
+  async function hanldeOpenNav(){
+    try {
+      await productApi.getUserById('122dasd');
+    } catch (error) {
+      
+    }
     if(openNav.right !== '-700px'){
       setOpenNav({
       right:'-700px',
@@ -100,7 +106,7 @@ function handleRepo2(){
             <img src={iconSearchMini} alt="icon search" className={classes.iconSearchMini}></img>
             <button className={classes.searchButton}>Tìm</button>
         </div>
-        <div className={classes.navSmall} style={isLogin.section1}>
+        <div className={classes.navSmall} style={isLog ? {display:'none'}:{display:'auto'} }>
           <img src={iconMenu} alt="menu icon" className={classes.navIconMenu} onClick={hanldeOpenNav}></img>
           <div className={classes.navSidebar} style={openNav}>
             <div className={classes.navSidebar1}>
@@ -120,22 +126,22 @@ function handleRepo2(){
             </div>
           </div>
         </div>
-        <ul className ={classes.navAuth} style={isLogin.section1}>
+        <ul className ={classes.navAuth} style={isLog ? {display:'none'}:{display:'auto'} }>
             <li className= {classes.navLogo}>
               <img src={iconUser} alt="logo icon user"></img>
             </li>
             <li className={classes.navSignin}><a href="" className ={classes.navAuthText}>Đăng nhập </a></li>
             <li className={classes.navSignup}><a href="" className ={classes.navAuthText}>Đăng ky</a></li>
         </ul>
-        <ul className ={classes.navAuth2} style={isLogin.section2}>
+        <ul className ={classes.navAuth2} style={isLog ? {display:'auto'}:{display:'none'} }>
             <li className= {classes.navMess}>
-            <i class="far fa-comment-dots"></i>
+            <i className="far fa-comment-dots"></i>
             </li>
             <li className={classes.navBell}>
-            <i class="far fa-bell"></i>
+            <i className="far fa-bell"></i>
             </li>
             <li className={classes.navUser}>
-            <i class="far fa-user"></i>
+            <i className="far fa-user"></i>
             </li>
             <li className={classes.navUserMore}>
             <i className="fas fa-angle-double-down"></i>
@@ -147,16 +153,8 @@ function handleRepo2(){
     </div>
   );
 }
-
-ButtonAppBar.getInitialProps = async ({ req }) => {
-  // const response = await axios.get('http://localhost:8000/api/v0/posts');
-  const data = {a:'a52'};
-
-  return {
-      data
-  };
-}
-
-
+ButtonAppBar.propTypes = {
+  isLogin: PropTypes.bool
+};
 
 export default withStyles(styles)(ButtonAppBar)

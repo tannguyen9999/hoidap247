@@ -28,18 +28,19 @@
     "next-images": "^1.7.0",
     "next-optimized-images": "^2.5.4",
     "prop-types": "latest",
+    "query-string": "^4.3.4",
     "react": "latest",
     "react-cookie": "^4.0.3",
     "react-device-detect": "^1.17.0",
     "react-dom": "latest",
     "react-ga": "^2.7.0",
     "react-lazy-load-image-component": "^1.4.3",
-    "react-lottie": "^1.2.3"
+    "react-lottie": "^1.2.3",
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "postbuild": "node scripts/sitemap.js"
+    "start": "next start"
   }
 }
