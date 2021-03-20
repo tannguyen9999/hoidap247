@@ -43,6 +43,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start -p $PORT",
-    "export":"npm run build && next export && mv out _static"
+    "export":"npm run build && next export && mv out _static",
+    "heroku-postbuild": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
