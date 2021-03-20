@@ -55986,7 +55986,7 @@ function MyApp(_ref) {
   }))));
 }
 
-MyApp.getInitialProps = function _callee(_ref2) {
+MyApp.getStaticProps = function _callee(_ref2) {
   var Component, ctx, allCookies, isLogin;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function _callee$(_context) {
     while (1) {
