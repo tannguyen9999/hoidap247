@@ -152,7 +152,7 @@ function handleRepo2(){
         
     </div>
   );
-}
+} 
 ButtonAppBar.propTypes = {
   isLogin: PropTypes.bool
 };
