@@ -1,10 +1,10 @@
 import { ThemeProvider } from "@material-ui/core/styles";
-import Theme from '../src/ui/Theme'
+import Theme from '../src/ui/Theme';
 import React from "react";
-import Header from '../src/ui/Header'
+import Header from '../src/ui/Header';
 import Head from "next/head";
-import "../assets/style.css"
-import cookies from 'next-cookies'
+import "../assets/style.css";
+import cookies from 'next-cookies';
 
 
 
@@ -32,11 +32,9 @@ function MyApp({ Component, pageProps,isLogin }) {
   );
 }
 
-MyApp.getInitialProps = async ({ Component, ctx }) => {
+MyApp.getStaticProps = async ({ Component, ctx }) => {
   const allCookies = cookies(ctx);
-  let isLogin = false;
-
-       
+  let isLogin = false;     
   try {
     if(allCookies.token == 'a'){
       isLogin = true;
