@@ -4,7 +4,7 @@ import React from "react";
 import Header from '../src/ui/Header';
 import Head from "next/head";
 import "../assets/style.css";
-import cookies from 'next-cookies';
+import cookies from 'next-cookies'; 
 
 
 
