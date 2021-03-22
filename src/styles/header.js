@@ -12,8 +12,9 @@ const styles = () =>{
         height:'52px',
         width:'100%',
         position:'fixed',
+        top:'0',
         boxShadow: '0px 0px 5px 1px #2626262b',
-        ['@media (min-width:740px) and (max-width:1022px)']: {
+        ['@media (max-width:1022px)']: {
           height:'46px',
         },
         display:'flex'
