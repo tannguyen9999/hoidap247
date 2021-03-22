@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps,isLogin }) {
   );
 }
 
-MyApp.getStaticProps = async ({ Component, ctx }) => {
+MyApp.getInitialProps = async ({ Component, ctx }) => {
   const allCookies = cookies(ctx);
   let isLogin = false;     
   try {

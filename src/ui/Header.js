@@ -39,6 +39,9 @@ const ButtonAppBar = ({ classes,isLog })=> {
   const [openNav, setOpenNav] = useState({
     right:'-700px'
   });
+  const [openNav2, setOpenNav2] = useState({
+    right:''
+  });
   const [valuePlaceSearch, setValuePlaceSearch] = useState('Câu hỏi của bạn là gì ?');
   const [styleRepo,setStyleRepo] = useState(
     {
@@ -64,6 +67,27 @@ const ButtonAppBar = ({ classes,isLog })=> {
       })
     }
   }
+  async function hanldeOpenNav2(){
+    
+    if(openNav2.right !== ''){
+      setOpenNav2({
+      right:'',
+      
+    })
+    }else{
+      setOpenNav2({
+      right:'0',
+      
+        
+      })
+    }
+  }
+  function clearNav(){
+    setOpenNav2({
+      right:'',
+      
+    })
+  }
   useEffect(() => {
     if(isMobile){
       setValuePlaceSearch('Tìm kiếm')
@@ -72,7 +96,7 @@ const ButtonAppBar = ({ classes,isLog })=> {
       setValuePlaceSearch('Câu hỏi của bạn là gì ?')
     }
   });
-  
+
 
   function handleRepo(){
     if(isMobile && isTablet == false){
@@ -133,6 +157,7 @@ function handleRepo2(){
             <li className={classes.navSignin}><a href="" className ={classes.navAuthText}>Đăng nhập </a></li>
             <li className={classes.navSignup}><a href="" className ={classes.navAuthText}>Đăng ky</a></li>
         </ul>
+        
         <ul className ={classes.navAuth2} style={isLog ? {display:'auto'}:{display:'none'} }>
             <li className= {classes.navMess}>
             <i className="far fa-comment-dots"></i>
@@ -140,14 +165,62 @@ function handleRepo2(){
             <li className={classes.navBell}>
             <i className="far fa-bell"></i>
             </li>
-            <li className={classes.navUser}>
+            <li className={classes.navUser} onClick={hanldeOpenNav2}>
             <i className="far fa-user"></i>
             </li>
-            <li className={classes.navUserMore}>
+            <li className={classes.navUserMore} onClick={hanldeOpenNav2}>
             <i className="fas fa-angle-double-down"></i>
             <span className={classes.navUserName}>N16dcdt076@gmail.com</span>
             </li>
+            
+           <div>
+           <div style={openNav2} className={classes.overNav} onClick={clearNav}></div>
+           <ul style={openNav2}  className={classes.navSidebar3} >
+           
+            <div>
+            <img 
+            src={backHeader} 
+            alt="back header" 
+            style={{
+
+              marginLeft: 'auto',
+              marginRight: '12px'
+            }
+            }
+            className={classes.backHeader}
+            onClick={hanldeOpenNav2}
+            ></img>
+              <li  className={classes.navSidebar3child}>
+                <div className={classes.navSidebarContent}>
+                <span className={classes.triangle}></span>
+                <span className={classes.navSidebar3Text}>Trang cá nhân</span>
+                </div>
+                </li>
+              <li  className={classes.navSidebar3child}>
+                <div className={classes.navSidebarContent}>
+                <span className={classes.triangle} ></span>
+              <span className={classes.navSidebar3Text}>Chỉnh sửa thông tin cá nhân</span>
+                </div>
+              </li>
+              <li  className={classes.navSidebar3child}>
+                <div className={classes.navSidebarContent}>
+                <span className={classes.triangle} ></span><span className={classes.navSidebar3Text}>Đấu trường tri thức</span>
+                </div>
+              </li>
+              <li  className={classes.navSidebar3child}>
+                <div className={classes.navSidebarContent}><span className={classes.triangle} ></span><span className={classes.navSidebar3Text}>Điểm danh nhận quà</span></div>
+              </li>
+              <li  className={classes.navSidebar3child}>
+                <div className={classes.navSidebarContent}>
+                <span className={classes.triangle} ></span><span className={classes.navSidebar3Text}>Đăng xuất</span>
+                </div>
+                
+              </li>
+            </div>
+            </ul>
+           </div>
         </ul>
+        
         </div>
         
     </div>

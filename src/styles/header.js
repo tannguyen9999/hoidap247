@@ -10,6 +10,8 @@ const styles = () =>{
       header: {
         backgroundColor: '#ffffff',
         height:'52px',
+        width:'100%',
+        position:'fixed',
         boxShadow: '0px 0px 5px 1px #2626262b',
         ['@media (min-width:740px) and (max-width:1022px)']: {
           height:'46px',
@@ -215,14 +217,17 @@ const styles = () =>{
       },
       backHeader:{
         cursor:'pointer',
-        display:'block',
+        display:'none',
         width:'20px',
         height:'20px',
         marginLeft:'20px',
         border: '1px solid green ',
         borderRadius: '5px',
         padding: '5px 10px',
-        marginTop:'2px'
+        ['@media (max-width:1022px)']: {
+          display:'block',
+          marginTop:'12px'  
+        },
       
         
       },
@@ -362,5 +367,100 @@ const styles = () =>{
           backgroundColor: "transparent"
         }
       },
+     
+      overNav:{
+        position:'fixed',
+               top:'48px',
+               width:'100%',  
+               right:'-9999px',
+               bottom:'0px',
+               
+      },
+
+      navSidebar3:{
+      
+        
+        listStyle:'none',
+        position: 'fixed',
+    top: '53px',
+    right: '-700px',
+    fontFamily: 'ui-sans-serif',
+    fontSize:'18px',
+    border: '1px solid #458ea7',
+    borderRadius: '5px',
+    boxShadow: '0px 0px 5px 1px #2626262b',
+    backgroundColor:'white',
+    ['@media (min-width: 640px) and (max-width:1022px)']: {
+      top: '47px',
+      height:'100%',
+      top:'0',
+      transition: 'all 0.5s ease 0s',
+
+
+    },
+    ['@media (max-width:639px)']: {
+      width:'100%',
+      top:'0',
+      height:'100%',
+      transition: 'all 0.5s ease 0s',
+
+    },
+      },
+
+
+      navSidebar3child:{
+        padding:'12px 12px 12px 60px',
+        display:'block',
+        textAlign: 'right',
+        ['@media (min-width:740px) and (max-width:1022px)']: {
+          paddingLeft:'12px',
+          textAlign: 'left'
+        },
+        ['@media (max-width:639px)']: {
+          paddingLeft:'12px',
+          textAlign: 'left'
+        },
+        
+        
+      },
+      triangle:{
+        display: 'inline-block',
+        width: '0',
+        height: '0',
+        border: '5px solid #333',
+        margin: '0 auto',
+        borderBottomColor: 'transparent',
+        borderRightColor: 'transparent',
+        borderTopColor: 'transparent',
+        ['@media (max-width:1022px)']: {
+          margin:'0 7px'
+          
+        },
+      },
+      navSidebar3Text:{
+        borderBottom: '1px solid #e1e1e1',
+        
+        width:'100%',
+        padding:'12px 12px',
+        ['@media (min-width:740px) and (max-width:1022px)']: {
+          paddingLeft:'0px',
+          borderBottom:'none'           
+        },
+        ['@media (max-width:639px)']: {
+        },
+        
+      },
+      navSidebarContent:{
+        
+        ['@media (min-width:740px) and (max-width:1022px)']: {
+          border: '1px solid #333', 
+          padding:'5px 0px',
+          border: '1px solid #e1e1e1',
+          borderRadius: '5px',           
+        },
+        ['@media (max-width:639px)']: {
+        },
+        
+      }
 })}
 export default styles; 
