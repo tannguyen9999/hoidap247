@@ -2,6 +2,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import Theme from '../src/ui/Theme';
 import React from "react";
 import Header from '../src/ui/Header';
+import Footer from '../src/ui/Footer'
 import Head from "next/head";
 import "../assets/style.css";
 import cookies from 'next-cookies'; 
@@ -26,6 +27,7 @@ function MyApp({ Component, pageProps,isLogin }) {
         <Component
           {...pageProps}
         />
+        <Footer></Footer>
         
       </ThemeProvider>
     </React.Fragment>

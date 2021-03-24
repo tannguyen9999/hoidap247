@@ -17,7 +17,7 @@ const Home = ({token ,classes,isLogin }) => {
         
       </Head>
   
-      <MainBoard isActive={0} />
+      <MainBoard isActive={8} />
     </div>
 )};
 Home.getInitialProps = async (ctx) => {

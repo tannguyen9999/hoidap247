@@ -7,7 +7,6 @@ import {
   isMobile,
   isBrowser,
   isTablet,
-  MobileView,
 } from "react-device-detect";
 import logo from "../assets/images/logo_h247.png"
 import iconUser from "../assets/images/icon_user.png"

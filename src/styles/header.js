@@ -8,6 +8,7 @@ const styles = () =>{
         color:'red'
       },
       header: {
+        zIndex:'15',
         backgroundColor: '#ffffff',
         height:'52px',
         width:'100%',
