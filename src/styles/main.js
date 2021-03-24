@@ -17,6 +17,9 @@ const styles = () =>{
         },
         subMenu:{
             width:'166px',
+            ['@media (max-width:1022px)']: {
+               with:'100%'
+            },
         
         },
         subMenu2:{
@@ -260,7 +263,8 @@ const styles = () =>{
             paddingLeft:'12px',
             paddingTop:'12px',
             color:'red',
-            display:'block'
+            display:'block',
+            
         }
     })
 }

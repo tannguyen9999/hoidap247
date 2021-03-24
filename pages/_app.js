@@ -6,11 +6,13 @@ import Footer from '../src/ui/Footer'
 import Head from "next/head";
 import "../assets/style.css";
 import cookies from 'next-cookies'; 
-
+import { Provider } from 'react-redux';
+import store from '../src/app/store';
 
 
 function MyApp({ Component, pageProps,isLogin }) {
   return (
+    <Provider store={store}>
     <React.Fragment>
       <Head>
         <title>My page</title>
@@ -27,10 +29,11 @@ function MyApp({ Component, pageProps,isLogin }) {
         <Component
           {...pageProps}
         />
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
         
       </ThemeProvider>
     </React.Fragment>
+    </Provider>
   );
 }
 

@@ -11,7 +11,9 @@ import game2 from "../assets/images/game2.jpg"
 import AskQuestion from "../component/AskQuestion/AskQuestion"
 import PropTypes, { func } from 'prop-types';
 import { useRouter } from 'next/router'
-
+import Loading from "../component/Loading.js/Loading"
+import { useDispatch, useSelector } from 'react-redux';
+import { isLoading } from './../app/loadingSile';
 let text = "tìm tập hợp A các số nguyên a sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp tìm tập hợp A các số nguyên a sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp"
 let test = text.split("↵")
 
@@ -19,6 +21,8 @@ let test = text.split("↵")
 
 
 const MainBoard = ({ classes,isActive })=> {
+    const dispatch = useDispatch();
+
     const router = useRouter()
     
     const [openNav,setOpenNav] = useState({
@@ -27,6 +31,7 @@ const MainBoard = ({ classes,isActive })=> {
         open:false
     })
     const [currentClass,setCurrentClass] = useState('0')
+   
     const [currentStatus,setCurrentStatus] = useState({
         index:'0',
         value:'Tất cả'
@@ -117,8 +122,27 @@ const MainBoard = ({ classes,isActive })=> {
 
     function handleChangeCategory(e){
     try {
+        
+        const changeIsLoading = {
+            isLoading: true
+          };
+        const action = isLoading(changeIsLoading);
+        dispatch(action);
+        setTimeout(function(){
+            const changeIsLoading2 = {
+                isLoading: false
+              };
+            const action2 = isLoading(changeIsLoading2);
+            dispatch(action2);
+        }, 300);
+
+        
         const key = e.target.closest("li");
+        
         const keyprops = key.dataset.keyprops;
+
+        
+
         if(keyprops == 0){
         router.push('/');
         return}
@@ -304,6 +328,9 @@ const MainBoard = ({ classes,isActive })=> {
             
         </div>
         <AskQuestion></AskQuestion>
+        <div >
+        <Loading></Loading>
+        </div>
     </div>)
 }
 
