@@ -113,7 +113,6 @@ const styles = () =>{
             width:'104px',
             height:'34px',
             backgroundColor:'white',
-            top:'0',
             marginRight:'25px',
             marginLeft:'25px',
             lineHeight:'34px',

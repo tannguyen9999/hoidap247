@@ -17,6 +17,8 @@ import iconSearchMini from "../assets/images/icon_search.png"
 import {getCookieFromBrowser} from "../util/cookies"
 import productApi from '../api/productApi'
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router'
+
 
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
@@ -32,9 +34,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 const ButtonAppBar = ({ classes,isLog })=> {
-  const token = getCookieFromBrowser('token')
- 
-  const classesTheme = useStyles();
+  const router = useRouter()
+
   const [openNav, setOpenNav] = useState({
     right:'-700px'
   });
@@ -120,10 +121,14 @@ const ButtonAppBar = ({ classes,isLog })=> {
 function handleRepo2(){
   setStyleRepo({})
 }
+function handleLogo(){
+  router.push('/');
+  return;
+}
   return (
     <div className ={classes.header}>
         <div className={classes.center}>
-          <div className={classes.logo}>
+          <div className={classes.logo} onClick={handleLogo}>
  
           </div>
         {/* <img src={logo} alt="Logo" className={classes.logo}></img> */}

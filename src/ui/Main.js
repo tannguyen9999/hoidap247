@@ -70,7 +70,7 @@ const MainBoard = ({ classes,isActive })=> {
         const data =  listClass.map((item,index)=>{
             return(
                 <li key={index} data-key={index} onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>{item.text}</li>
-            )
+            ) 
         })
         return data
         
@@ -198,7 +198,7 @@ const MainBoard = ({ classes,isActive })=> {
                 <div style={openNav.open ? {right:'0'}:{}} onClick={handleCloseNav} className={classes.overNav}></div>
                 <ul style={openNav.openClass ? {display:''} : {display:'none'}} className='selectClass'>
                        {handleListClass()}
-                    </ul>
+                    </ul> 
                 <li onClick={handleOpenStatus} className={classes.filterStatus}><span>{currentStatus.value}</span> <img className={classes.filterDown} src={iconDown} alt='icon down'></img></li>
                 <ul className='selectStatus' style={openNav.openStatus ? {display:''} : {display:'none'}} >
                         <li data-key='0' onClick={(e)=>handleClickStatus(e)} className={classes.filterStatusItem}>Tất cả</li>

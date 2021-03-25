@@ -39,7 +39,9 @@ const styles = () =>{
         marginTop: 'auto',
         marginBottom: 'auto',
         background:`url(${background}) top center / cover no-repeat`,
-
+        "&:hover": {
+          opacity:0.8
+        },
         ['@media (min-width:640px) and (max-width:1024px)']: {
           width:'142px',
           height:'26px',
@@ -119,6 +121,10 @@ const styles = () =>{
         ['@media (max-width:639px)']: {
           display:'none',
         },
+        "&:hover": {
+          opacity:0.8
+        },
+        
       },
       iconSearchMini:{
         display:'none',
