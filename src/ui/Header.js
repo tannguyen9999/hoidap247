@@ -123,7 +123,10 @@ function handleRepo2(){
   return (
     <div className ={classes.header}>
         <div className={classes.center}>
-        <img src={logo} alt="Logo" className={classes.logo}></img>
+          <div className={classes.logo}>
+ 
+          </div>
+        {/* <img src={logo} alt="Logo" className={classes.logo}></img> */}
         <div className={classes.sectionSearch} style={styleRepo}>
             <input onFocus={handleRepo} onBlur={handleRepo2} placeholder={valuePlaceSearch} type="text"  className={classes.searchInput}/>
             <img src={iconSearchMini} alt="icon search" className={classes.iconSearchMini}></img>

@@ -7,14 +7,17 @@ const styles = () =>{
         footer:{
             marginTop:'20px',
             backgroundColor:'#438aa3',
-            height:'277px'
+            
         },
         overFooter:{
             maxWidth:'1200px',
             paddingTop:'12px',
             marginLeft:'auto',
             marginRight:'auto',
-            display:'flex'
+            display:'flex',
+            ['@media (max-width:1022px)']: {
+                flexDirection: 'column'
+            },
         },
         aboutCompany:{
             width:'336px',
@@ -43,6 +46,7 @@ const styles = () =>{
             transition: 'all 0.2s ease 0s',
         },
         rules:{
+        
             width:'336px',
             marginLeft:'24px',
             paddingTop:'12px',
@@ -50,11 +54,12 @@ const styles = () =>{
             
         },
         section3:{
+            
             paddingTop:'12px',
-            width:'456px',
             backgroundColor:'',
             marginLeft:'24px',
             color:'white',
+            maxWidth:'100%'
 
         },
         local:{

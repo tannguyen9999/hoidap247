@@ -11,14 +11,22 @@ const styles = () =>{
             marginRight:'auto',
             maxWidth:'100%',
             display:'flex',
+            
             ['@media (max-width:1022px)']: {
                 marginTop:'70px',
+                flexDirection: 'column'
+              },
+              ['@media (max-width:649px)']: {
+                marginTop:'70px',
+                flexDirection: 'column',
+                flexWrap:'wrap',
               },
         },
         subMenu:{
             width:'166px',
             ['@media (max-width:1022px)']: {
-               with:'100%'
+               width:'100%',
+               
             },
         
         },
@@ -28,7 +36,12 @@ const styles = () =>{
 
             lineHeight:'30px',
             color:'#262626',
-            
+            ['@media (max-width:1022px)']: {
+                display:'flex',
+                width:'100%',
+                overflow:'scroll',
+                
+             },
 
         },
         subCatego:{
@@ -41,12 +54,19 @@ const styles = () =>{
             cursor:'pointer',
             "&:hover": {
                 backgroundColor:'#e7b712',
+                ['@media (max-width:1022px)']: {
+                    backgroundColor:'white',
+                },
               },
+            
             
         },
         
         kihieu:{
             padding:'6px',
+            ['@media (max-width:1022px)']: {
+                
+             },
         },
         subMenuText:{
             fontWeight:'700'
@@ -59,6 +79,12 @@ const styles = () =>{
         homePage:{
             width:'620px',
             backgroundColor:'',
+            marginTop:'12px',
+            ['@media (max-width:1022px)']: {
+                width:'95%',
+                marginLeft:'auto',
+                marginRight:'auto'
+            },
         
         },
         bannerResponse:{
@@ -69,7 +95,11 @@ const styles = () =>{
             fontWeight: 800,
             textAlign: 'center',
             lineHeight: '82px',
-            fontSize: '31px'
+            fontSize: '31px',
+            ['@media (max-width:640px)']: {
+                display: 'none'
+            
+            },
 
         },
         customFilter:{
@@ -163,7 +193,10 @@ const styles = () =>{
             backgroundColor:'white',
             borderRadius:'5px',
             overflow:'hidden',
-            marginBottom:'10px'
+            marginBottom:'10px',
+            ['@media (max-width:1022px)']: {
+                borderRadius:'25px',
+            },
         },
         headerQuestion:{
             listStyle:'none',
@@ -206,9 +239,13 @@ const styles = () =>{
         event:{
             width:'414px',
             backgroundColor:'',
+            ['@media (max-width:1022px)']: {
+                display:'none'
+            },
         
         },
         seeMore:{
+            
             backgroundColor:'white',
             textAlign:'center',
             fontSize:'15px',

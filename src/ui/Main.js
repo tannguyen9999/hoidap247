@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import {withStyles} from '@material-ui/core';
+import {ListItem, withStyles} from '@material-ui/core';
 import styles from "../styles/main"
 import iconDown from "../assets/images/icon-dow2.png"
 import avatar from "../assets/images/icon_user.png"
@@ -14,6 +14,8 @@ import { useRouter } from 'next/router'
 import Loading from "../component/Loading.js/Loading"
 import { useDispatch, useSelector } from 'react-redux';
 import { isLoading } from './../app/loadingSile';
+import contentSlideBar from '../util/Contants/contentSlideBar'
+import listClass from '../util/Contants/listClass'
 let text = "tìm tập hợp A các số nguyên a sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp tìm tập hợp A các số nguyên a sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp"
 let test = text.split("↵")
 
@@ -21,6 +23,7 @@ let test = text.split("↵")
 
 
 const MainBoard = ({ classes,isActive })=> {
+
     const dispatch = useDispatch();
 
     const router = useRouter()
@@ -36,6 +39,42 @@ const MainBoard = ({ classes,isActive })=> {
         index:'0',
         value:'Tất cả'
     })
+
+    
+        setTimeout(function(){
+            const changeIsLoading2 = {
+                isLoading: false
+              };
+            const action2 = isLoading(changeIsLoading2);
+            dispatch(action2);
+         }, 300);
+
+        
+    
+
+    const handleContenSileBar = ()=>{
+        const data = contentSlideBar.map((item,index)=>{
+            return(
+                <li key={index} data-keyprops={index} style={isActive == index ? {background:'#e7b712'}:{} } className={classes.subCatego}>
+                    <i className={`${classes.kihieu} ${item.iconCLass}`}></i>
+                    <span className={classes.subMenuText}>{item.text}</span>
+                </li>
+
+            )
+            
+        }   
+        )
+        return data       
+    }
+    const handleListClass = ()=>{
+        const data =  listClass.map((item,index)=>{
+            return(
+                <li key={index} data-key={index} onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>{item.text}</li>
+            )
+        })
+        return data
+        
+    }
     const handleDta = ()=>{
         const data =  test.map((temp,i)=>{
             return(
@@ -43,9 +82,9 @@ const MainBoard = ({ classes,isActive })=> {
             )
         })
         return data
-        // console.log(a,'hiihih')
-        // return a
+        
     }
+   
     function handleCloseNav(){
         setOpenNav(
             {
@@ -81,6 +120,8 @@ const MainBoard = ({ classes,isActive })=> {
             openClass:false,
             open:false
         })
+
+       
         if(key == 0){
             setCurrentStatus({
                 index:'0',
@@ -122,88 +163,31 @@ const MainBoard = ({ classes,isActive })=> {
 
     function handleChangeCategory(e){
     try {
-        
-        const changeIsLoading = {
-            isLoading: true
-          };
-        const action = isLoading(changeIsLoading);
-        dispatch(action);
-        setTimeout(function(){
-            const changeIsLoading2 = {
-                isLoading: false
-              };
-            const action2 = isLoading(changeIsLoading2);
-            dispatch(action2);
-        }, 300);
-
-        
         const key = e.target.closest("li");
-        
         const keyprops = key.dataset.keyprops;
-
         
-
-        if(keyprops == 0){
-        router.push('/');
-        return}
-        if(keyprops == 1){
-        router.push('/mon-toan');
-        return}
-        if(keyprops == 2){
-        router.push('/mon-ly');
-        return}
-        if(keyprops == 3){
-        router.push('/mon-hoa');
-        return}
-        if(keyprops == 4){
-        router.push('/mon-ngoaingu');
-        return}
-        if(keyprops == 5){
-        router.push('/mon-van');
-        return}
-        if(keyprops == 6){
-        router.push('/mon-sinh');
-        return}
-        if(keyprops == 7){
-        router.push('/mon-su');
-        return}
-        if(keyprops == 8){
-        router.push('/mon-dia');
-        return}
-        if(keyprops == 9){
-        router.push('/mon-congdan');
-        return}
-        if(keyprops == 10){
-        router.push('/mon-tin');
-        return}
-        if(keyprops == 11){
-        router.push('/mon-congnghe');
-        return}
-        if(keyprops == 12){
-        router.push('/mon-nhac');
-        return}
-    return
+        console.log(keyprops)
+        const pust = contentSlideBar[keyprops];
+        const {link} = pust;
+        if(link){
+            const changeIsLoading = {
+                isLoading: true
+              };
+            const action = isLoading(changeIsLoading);
+            dispatch(action);
+            router.push(link)
+        }
+        return
     } catch (error) {
         
     }
 }
 
+
     return(<div className = {classes.overMain}>
         <div className={classes.subMenu}>
             <ul className={classes.subMenu2} onClick={(e)=>handleChangeCategory(e)}>
-                <li data-keyprops='0' style={isActive == 0 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fas fa-border-all`}></i><span className={classes.subMenuText}>Tất cả</span></li>
-                <li data-keyprops='1' style={isActive == 1 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fas fa-calculator`}></i><span className={classes.subMenuText}>Toán Học</span></li>
-                <li data-keyprops='2' style={isActive == 2 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fab fa-reacteurope`}></i><span className={classes.subMenuText}>Vật Lý</span></li>
-                <li data-keyprops='3' style={isActive == 3 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fab fa-angular`}></i><span className={classes.subMenuText}>Hóa Học</span></li>
-                <li data-keyprops='4' style={isActive == 4 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fas fa-language`}></i><span className={classes.subMenuText}>Ngoại Ngữ</span></li>
-                <li data-keyprops='5' style={isActive == 5 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} far fa-bookmark`}></i><span className={classes.subMenuText}>Ngữ Văn</span></li>
-                <li data-keyprops='6' style={isActive == 6 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fab fa-pagelines`}></i><span className={classes.subMenuText}>Sinh Học</span></li>
-                <li data-keyprops='7' style={isActive == 7 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fas fa-hat-cowboy`}></i><span className={classes.subMenuText}>Lịch Sử</span></li>
-                <li data-keyprops='8' style={isActive == 8 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fas fa-globe-asia`}></i><span className={classes.subMenuText}>Địa Lý</span></li>
-                <li data-keyprops='9' style={isActive == 9 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fab fa-fort-awesome`}></i><span className={classes.subMenuText}>GDCD</span></li>
-                <li data-keyprops='10' style={isActive == 10 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fas fa-laptop-code`}></i><span className={classes.subMenuText}>Tin Học</span></li>
-                <li data-keyprops='11' style={isActive == 11 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fas fa-tachometer-alt`}></i><span className={classes.subMenuText}>Công Nghệ</span></li>
-                <li data-keyprops='12' style={isActive == 12 ? {background:'#e7b712'}:{} } className={classes.subCatego}><i className={`${classes.kihieu} fas fa-music`}></i><span className={classes.subMenuText}>Nhạc Họa</span></li>
+                {handleContenSileBar()}
             </ul>
         </div>
         <div className={classes.homePage}>
@@ -213,19 +197,7 @@ const MainBoard = ({ classes,isActive })=> {
                 </li>
                 <div style={openNav.open ? {right:'0'}:{}} onClick={handleCloseNav} className={classes.overNav}></div>
                 <ul style={openNav.openClass ? {display:''} : {display:'none'}} className='selectClass'>
-                        <li data-key='0' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Tất cả</li>
-                        <li data-key='1' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 1</li>
-                        <li data-key='2' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 2</li>
-                        <li data-key='3' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 3</li>
-                        <li data-key='4' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 4</li>
-                        <li data-key='5' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 5</li>
-                        <li data-key='6' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 6</li>
-                        <li data-key='7' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 7</li>
-                        <li data-key='8' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 8</li>
-                        <li data-key='9' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 9</li>
-                        <li data-key='10' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 10</li>
-                        <li data-key='11' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 11</li>
-                        <li data-key='12' onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>Lớp 12</li>
+                       {handleListClass()}
                     </ul>
                 <li onClick={handleOpenStatus} className={classes.filterStatus}><span>{currentStatus.value}</span> <img className={classes.filterDown} src={iconDown} alt='icon down'></img></li>
                 <ul className='selectStatus' style={openNav.openStatus ? {display:''} : {display:'none'}} >
@@ -328,9 +300,7 @@ const MainBoard = ({ classes,isActive })=> {
             
         </div>
         <AskQuestion></AskQuestion>
-        <div >
-        <Loading></Loading>
-        </div>
+       
     </div>)
 }
 

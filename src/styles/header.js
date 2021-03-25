@@ -20,6 +20,7 @@ const styles = () =>{
         },
         display:'flex'
       },
+     
       center:{
         flex:'1',
         maxWidth:'1200px',
@@ -41,9 +42,9 @@ const styles = () =>{
           padding:'0 12px'
         },
         ['@media (max-width:1022px)']: {
-          width:'100px',
+          width:'120px',
           height:'21.625px',
-          padding:'0 12px'
+          padding:'0 0px'
         },
         
       },

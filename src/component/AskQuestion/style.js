@@ -7,7 +7,11 @@ const styles = () =>{
         overLayout:{
             position:'fixed',
             top:'83vh',
-            right:'35px'
+            right:'35px',
+            ['@media (max-width:1022px)']: {
+                top:'95vh',
+            },
+        
         },
         addQuestion:{
             display:'flex',

@@ -8,7 +8,7 @@ import facebook from "../assets/images/fp.png"
 import youtube from "../assets/images/youtube.png"
 import mess from "../assets/images/icon_mesenger.png"
 import place from "../assets/images/icon-place.png"
-const Footer = ({classes})=>{
+const Footer = ({classes})=>{  
     return(<div className={classes.footer}>
         <div className={classes.overFooter}>
             <div className={classes.aboutCompany}>

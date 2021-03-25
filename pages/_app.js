@@ -8,7 +8,7 @@ import "../assets/style.css";
 import cookies from 'next-cookies'; 
 import { Provider } from 'react-redux';
 import store from '../src/app/store';
-
+import Loading from '../src/component/Loading.js/Loading'
 
 function MyApp({ Component, pageProps,isLogin }) {
   return (
@@ -29,8 +29,8 @@ function MyApp({ Component, pageProps,isLogin }) {
         <Component
           {...pageProps}
         />
-        {/* <Footer></Footer> */}
-        
+        <Footer></Footer>
+        <Loading></Loading>
       </ThemeProvider>
     </React.Fragment>
     </Provider>
