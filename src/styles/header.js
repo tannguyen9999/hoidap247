@@ -1,4 +1,6 @@
 import { useTheme } from "@material-ui/core/styles";
+import background from "../assets/images/logo_h247.png";
+import background2 from "../assets/images/logo_small.png";
 
 const styles = () =>{
     const theme = useTheme();
@@ -36,15 +38,19 @@ const styles = () =>{
         height:'30px',
         marginTop: 'auto',
         marginBottom: 'auto',
-        ['@media (min-width:1023px) and (max-width:1024px)']: {
+        background:`url(${background}) top center / cover no-repeat`,
+
+        ['@media (min-width:640px) and (max-width:1024px)']: {
           width:'142px',
           height:'26px',
-          padding:'0 12px'
+          marginLeft:'12px'
         },
-        ['@media (max-width:1022px)']: {
-          width:'120px',
-          height:'21.625px',
-          padding:'0 0px'
+        ['@media (max-width: 639px)']: {
+          background:`url(${background2}) top center / cover no-repeat`,
+          width:'22px',
+          height:'25.406px',
+          marginRight:'12px',
+          marginLeft:'12px'
         },
         
       },
