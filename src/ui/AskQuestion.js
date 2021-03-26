@@ -14,6 +14,7 @@ const AskQuestion = ({classes})=> {
         class:false,
         subject:false
     })
+    const [loading,setLoading]= useState(false)
     const [imageInput,setImageInput] = useState({
         src:'',
     })
@@ -23,7 +24,7 @@ const AskQuestion = ({classes})=> {
                     <div className={classes.listImage}>
                 <div style= {{position:'relative'}}>
                     {/* <i className={classes.cancleImage}>x</i> */}
-                    <img src={imageInput.src} alt="" className={classes.imageInput}></img>
+                    <img src={imagetem} alt="" className={classes.imageInput}></img>
                 </div>
             </div>
             )
@@ -113,10 +114,15 @@ const AskQuestion = ({classes})=> {
     
             fileReader.readAsDataURL(file);
              fileReader.onload = (e) => {
+                 setLoading(true);
                 const result = fileReader.result;
                 if(result){
-                    alert('da xong')
+                    setLoading(false);
+                    setImageInput({
+                        src:result
+                    })
                 }
+                return 
             };
         return
     }
@@ -149,14 +155,28 @@ const AskQuestion = ({classes})=> {
             <div className={classes.inputImage} onClick={handleSendImage}>
                
                 <div>Gửi ảnh: </div>
+                
                 <img className={classes.image} src={image} alt='import Image'></img>
+                <div style={{position:'relative'}}>
+                <div className={classes.loader} style={loading ? {display:'block'}:{}}><style>{`
+            @keyframes spin {
+                 0% { transform: rotate(0deg); }
+                 100% { transform: rotate(360deg); }
+            }
+            @-webkit-keyframes spin {
+                0% { -webkit-transform: rotate(0deg); }
+                100% { -webkit-transform: rotate(360deg); }
+              }
+        `}</style></div>
+                </div>
+                
                 {handleInputImage()}
                 
                 <input ref={inputEl} type="file" accept=".jpg, .jpeg, .png" onChange={(e)=>{handleFileInput(e)}} hidden/>
             </div>
-            
-            
-            
+           
+        
+          
             <div className={classes.sendE}>
                 <div className={classes.senQues}>Gửi câu hỏi</div>
             </div>

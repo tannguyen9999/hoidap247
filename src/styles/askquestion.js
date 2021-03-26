@@ -207,31 +207,31 @@ const styles = () =>{
                 marginBottom:'0px',
             },
         },
+        loader:{
+            border: '16px solid #f3f3f3',
+            borderRadius: '50%',
+            borderTop: '16px solid #3498db',
+            width: '30px',
+            height: '30px',
+            marginLeft:'24px',
+            '-webkit-animation': 'spin 2s linear infinite', /* Safari */
+            animation: 'spin 2s linear infinite',
+            display:'none'
+            
+        },
         listImage:{
             backgroundColor:'red',
             marginLeft:'24px',
             
         },
-        cancleImage:{
-            position: 'absolute',
-    left: '75px',
-    background: 'white',
-    padding: '4px 8px',
-    borderRadius: '15px',
-    fontSize: '14px',
-    fontWeight:'900',
-    cursor:'pointer',
-    "&:hover": {
-        backgroundColor:'red',
-       
-      },
-        },
+        
         imageInput:{
             display:'block',
             width:'100px',
             height:'100px',
             objectFit: 'cover',
-        }
+        },
+        
     })
 }
 export default styles
