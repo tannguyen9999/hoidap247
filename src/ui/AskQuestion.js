@@ -6,6 +6,7 @@ import listSubject from "../util/Contants/contentSlideBar"
 import React, { useState, useRef } from 'react';
 import image from "../assets/images/icon-recipe3.png";
 import imagetem from "../assets/images/anh1.jpg"
+import {UploadAvatar} from "../util/test"
 const AskQuestion = ({classes})=> {
     const [currentClass,setCurrentClass] = useState('Chọn lớp')
     const [currentSub,setCurrentSub] = useState('Chọn môn')
@@ -24,7 +25,7 @@ const AskQuestion = ({classes})=> {
                     <div className={classes.listImage}>
                 <div style= {{position:'relative'}}>
                     {/* <i className={classes.cancleImage}>x</i> */}
-                    <img src={imagetem} alt="" className={classes.imageInput}></img>
+                    <img src={imageInput.src} alt="" className={classes.imageInput}></img>
                 </div>
             </div>
             )
@@ -99,7 +100,7 @@ const AskQuestion = ({classes})=> {
          inputEl.current.click();
        return; 
     }
-    async function handleFileInput(e){
+     function  handleFileInput(e){
         const file = e.target.files[0];
         // if(file.type == "image/jpeg" || file.type == "image/png"){
         //     const reader = new FileReader();
@@ -110,7 +111,7 @@ const AskQuestion = ({classes})=> {
                 
         //     }
         //     reader.readAsDataURL(file)
-        if(file){
+        if(file && (file.type == "image/jpeg" || file.type == "image/png")){
             const fileReader = new FileReader();
     
             fileReader.readAsDataURL(file);
@@ -118,17 +119,37 @@ const AskQuestion = ({classes})=> {
              fileReader.onload = (e) => {
                  
                 const result = fileReader.result;
+                
                 if(result){
+                    
                     setLoading(false);
                     setImageInput({
                         src:result
                     })
+                    
                 }
                 return 
             };
+        }else{
+            alert('Vui lòng chọn định dạng hình ảnh')
         }
             
         return
+    }
+
+    async function handleSendConten(){
+        const file = inputEl.current.files[0];
+        if(file){
+            const form = new FormData();
+                    form.append('avatar', file);
+              const data = await UploadAvatar(form);
+              console.log(data)
+              return
+
+        }
+        return
+        
+       
     }
     return(<div className={classes.overSection}>
         
@@ -181,7 +202,7 @@ const AskQuestion = ({classes})=> {
            
         
           
-            <div className={classes.sendE}>
+            <div className={classes.sendE} onClick={handleSendConten}>
                 <div className={classes.senQues}>Gửi câu hỏi</div>
             </div>
             <div style={open.class == true || open.subject == true ?{display:"block"}:{display:'none'}} onClick={handleOpenClose}className={classes.overOpen}></div>
