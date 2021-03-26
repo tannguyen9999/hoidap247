@@ -206,6 +206,31 @@ const styles = () =>{
                 order:'1',
                 marginBottom:'0px',
             },
+        },
+        listImage:{
+            backgroundColor:'red',
+            marginLeft:'24px',
+            
+        },
+        cancleImage:{
+            position: 'absolute',
+    left: '75px',
+    background: 'white',
+    padding: '4px 8px',
+    borderRadius: '15px',
+    fontSize: '14px',
+    fontWeight:'900',
+    cursor:'pointer',
+    "&:hover": {
+        backgroundColor:'red',
+       
+      },
+        },
+        imageInput:{
+            display:'block',
+            width:'100px',
+            height:'100px',
+            objectFit: 'cover',
         }
     })
 }

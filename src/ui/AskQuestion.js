@@ -3,17 +3,33 @@ import {withStyles} from '@material-ui/core';
 import styles from "../styles/askquestion"
 import listClass from "../util/Contants/listClass";
 import listSubject from "../util/Contants/contentSlideBar"
-import React, { useState, useEffect } from 'react';
-import image from "../assets/images/icon-recipe3.png"
-
+import React, { useState, useRef } from 'react';
+import image from "../assets/images/icon-recipe3.png";
+import imagetem from "../assets/images/anh1.jpg"
 const AskQuestion = ({classes})=> {
     const [currentClass,setCurrentClass] = useState('Chọn lớp')
     const [currentSub,setCurrentSub] = useState('Chọn môn')
-    
+    const inputEl = useRef(null);
     const [open,setNav]= useState({
         class:false,
         subject:false
     })
+    const [imageInput,setImageInput] = useState({
+        src:'',
+    })
+    function handleInputImage(){
+        if(imageInput.src !== ''){
+            return(
+                    <div className={classes.listImage}>
+                <div style= {{position:'relative'}}>
+                    {/* <i className={classes.cancleImage}>x</i> */}
+                    <img src={imageInput.src} alt="" className={classes.imageInput}></img>
+                </div>
+            </div>
+            )
+        }
+        return
+    }
     function handleOpenClose(){
         setNav(
             {
@@ -78,8 +94,34 @@ const AskQuestion = ({classes})=> {
         )
         return
     }
+    function handleSendImage(){
+         inputEl.current.click();
+       return;
+    }
+    async function handleFileInput(e){
+        const file = e.target.files[0];
+        // if(file.type == "image/jpeg" || file.type == "image/png"){
+        //     const reader = new FileReader();
+        //     reader.onload = function(){
+        //         const result = reader.result;
+        //         console.log(result)
+        //        alert('aaa')
+                
+        //     }
+        //     reader.readAsDataURL(file)
+            const fileReader = new FileReader();
     
+            fileReader.readAsDataURL(file);
+             fileReader.onload = (e) => {
+                const result = fileReader.result;
+                if(result){
+                    alert('da xong')
+                }
+            };
+        return
+    }
     return(<div className={classes.overSection}>
+        
         <div className={classes.overLayout}>
             <div className={classes.overTitle}>
             <span className={classes.title}>Đặt câu hỏi về bài tập của bạn</span>
@@ -94,8 +136,9 @@ const AskQuestion = ({classes})=> {
                 <div onClick={handleChooseSub} className={classes.fiterSection2}>{currentSub}
                 <ul style={open.subject == true ? {display:'block'}:{}} className={classes.fiterSectionSub}>
                     {handleRenderSubject()}
+                    
                 </ul>
-             
+                
                 </div>     
             </ul>
             <div className={classes.inputText}>
@@ -103,10 +146,17 @@ const AskQuestion = ({classes})=> {
 
             </textarea> 
             </div>
-            <div className={classes.inputImage}>
+            <div className={classes.inputImage} onClick={handleSendImage}>
+               
                 <div>Gửi ảnh: </div>
                 <img className={classes.image} src={image} alt='import Image'></img>
+                {handleInputImage()}
+                
+                <input ref={inputEl} type="file" accept=".jpg, .jpeg, .png" onChange={(e)=>{handleFileInput(e)}} hidden/>
             </div>
+            
+            
+            
             <div className={classes.sendE}>
                 <div className={classes.senQues}>Gửi câu hỏi</div>
             </div>
