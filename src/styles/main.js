@@ -50,7 +50,7 @@ const styles = () =>{
             marginBottom:'12px',
             width:'81%',
             minWidth:'115.312px',
-            paddingLeft:'5px',
+            paddingLeft:'5px', 
             cursor:'pointer',
             "&:hover": {
                 backgroundColor:'#e7b712',

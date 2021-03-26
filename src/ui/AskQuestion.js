@@ -97,7 +97,7 @@ const AskQuestion = ({classes})=> {
     }
     function handleSendImage(){
          inputEl.current.click();
-       return;
+       return; 
     }
     async function handleFileInput(e){
         const file = e.target.files[0];
@@ -110,11 +110,13 @@ const AskQuestion = ({classes})=> {
                 
         //     }
         //     reader.readAsDataURL(file)
+        if(file){
             const fileReader = new FileReader();
     
             fileReader.readAsDataURL(file);
+            setLoading(true);
              fileReader.onload = (e) => {
-                 setLoading(true);
+                 
                 const result = fileReader.result;
                 if(result){
                     setLoading(false);
@@ -124,6 +126,8 @@ const AskQuestion = ({classes})=> {
                 }
                 return 
             };
+        }
+            
         return
     }
     return(<div className={classes.overSection}>
