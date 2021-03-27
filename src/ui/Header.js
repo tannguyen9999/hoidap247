@@ -18,6 +18,9 @@ import {getCookieFromBrowser} from "../util/cookies"
 import productApi from '../api/productApi'
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router'
+import { isLoading } from './../app/loadingSile';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const ButtonAppBar = ({ classes,isLog })=> {
+  const dispatch = useDispatch();
   const router = useRouter()
 
   const [openNav, setOpenNav] = useState({
@@ -123,6 +127,13 @@ function handleRepo2(){
 }
 function handleLogo(){
   router.push('/');
+  setTimeout(function(){
+    const changeIsLoading = {
+        isLoading: true
+      };
+    const action = isLoading(changeIsLoading);
+    dispatch(action);
+ }, 100);
   return;
 }
   return (

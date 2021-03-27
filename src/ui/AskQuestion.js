@@ -7,10 +7,16 @@ import React, { useState, useRef } from 'react';
 import image from "../assets/images/icon-recipe3.png";
 import imagetem from "../assets/images/anh1.jpg"
 import {UploadAvatar} from "../util/test"
+import { isLoading } from './../app/loadingSile';
+
+import { useDispatch, useSelector } from 'react-redux';
 const AskQuestion = ({classes})=> {
     const [currentClass,setCurrentClass] = useState('Chọn lớp')
     const [currentSub,setCurrentSub] = useState('Chọn môn')
     const inputEl = useRef(null);
+    const inputEl2 = useRef(null);
+    const dispatch = useDispatch();
+
     const [open,setNav]= useState({
         class:false,
         subject:false
@@ -19,6 +25,13 @@ const AskQuestion = ({classes})=> {
     const [imageInput,setImageInput] = useState({
         src:'',
     })
+    setTimeout(function(){
+        const changeIsLoading2 = {
+            isLoading: false
+          };
+        const action2 = isLoading(changeIsLoading2);
+        dispatch(action2);
+     }, 100);
     function handleInputImage(){
         if(imageInput.src !== ''){
             return(
@@ -139,11 +152,14 @@ const AskQuestion = ({classes})=> {
 
     async function handleSendConten(){
         const file = inputEl.current.files[0];
+        const file2 = inputEl2.current.value;
+        const value2 = file2.replaceAll('\n','↵')
+        
         if(file){
             const form = new FormData();
                     form.append('avatar', file);
               const data = await UploadAvatar(form);
-              console.log(data)
+           
               return
 
         }
@@ -173,7 +189,7 @@ const AskQuestion = ({classes})=> {
                 </div>     
             </ul>
             <div className={classes.inputText}>
-            <textarea className={classes.framesText} placeholder="Nhập câu hỏi hoặc gửi hình ảnh, chú ý không yêu cầu giải toàn bộ đề và hãy chia nhỏ câu hỏi để có lời giải nhanh nhất.">  
+            <textarea ref={inputEl2} className={classes.framesText} placeholder="Nhập câu hỏi hoặc gửi hình ảnh, chú ý không yêu cầu giải toàn bộ đề và hãy chia nhỏ câu hỏi để có lời giải nhanh nhất.">  
 
             </textarea> 
             </div>
