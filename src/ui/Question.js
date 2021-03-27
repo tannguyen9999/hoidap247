@@ -4,24 +4,25 @@ import Event from "../component/Event/Event"
 import anh1 from "../assets/images/chipu.jpg";
 import anh2 from "../assets/images/lazada.jpg";
 import anh3 from "../assets/images/lazada2.jpg";
-import classes from '*.module.css';
 
-function hanldelRenderSection1(){
-    return(
-        <div className = {classes.overContai}>
-            <div className={classes.headerContent}>
-                <img src="" alt="avatar"></img>
-                <span>Nhac</span>
-                <span>Lop 9</span>
-            </div>
-            <div className = {classes.mainContenr}>
-                anh em oi
-            </div>
-        </div>
-    )
-}
+
 
 const Question = ({classes})=>{
+
+    function hanldelRenderSection1(){
+        return(
+            <div className = {classes.overContai}>
+                <div className={classes.headerContent}>
+                    <img src="" alt="avatar"></img>
+                    <span>Nhac</span>
+                    <span>Lop 9</span>
+                </div>
+                <div className = {classes.mainContenr}>
+                    anh em oi
+                </div>
+            </div>
+        )
+    }
     return(
         <div className = {classes.overMain}>
             <div className={classes.rentPage}>
