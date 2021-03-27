@@ -15,7 +15,7 @@ const Submenu = ({classes,isActive})=>{
     const handleContenSileBar = ()=>{
         const data = contentSlideBar.map((item,index)=>{
             return(
-                <Link href={item.link} passHref >
+                <Link href={item.link} passHref key={index} >
                 <li onClick={(e)=>handleChangeCategory(e)} key={index} data-keyprops={index} style={isActive == index ? {background:'#e7b712'}:{} } className={classes.subCatego}>
                     <i key={index} className={`${classes.kihieu} ${item.iconCLass}`}></i>
                     <span key={index} className={classes.subMenuText}>{item.text}</span>
