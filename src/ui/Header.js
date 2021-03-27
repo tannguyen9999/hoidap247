@@ -124,7 +124,7 @@ const ButtonAppBar = ({ classes,isLog })=> {
 function handleRepo2(){
   setStyleRepo({})
 }
-function handleLogo(){
+function handleLoading(){
   
   setTimeout(function(){
     const changeIsLoading = {
@@ -138,8 +138,8 @@ function handleLogo(){
   return (
     <div className ={classes.header}>
         <div className={classes.center}>
-          <Link href="/">
-          <div className={classes.logo} onClick={handleLogo}></div>
+          <Link href="/" passHref>
+          <div className={classes.logo} onClick={handleLoading}></div>
             
           </Link>
 
@@ -209,18 +209,32 @@ function handleLogo(){
             className={classes.backHeader}
             onClick={hanldeOpenNav2}
             ></img>
-              <li  className={classes.navSidebar3child}>
-                <div className={classes.navSidebarContent}>
-                <span className={classes.triangle}></span>
-                <span className={classes.navSidebar3Text}>Trang cá nhân</span>
+              <div onClick={hanldeOpenNav2}>
+              <Link href="/user/profile" onClick={handleLoading} passHref>
+
+<li  className={classes.navSidebar3child} style={{cursor:'pointer'}}>
+  <div className={classes.navSidebarContent}>
+  <span className={classes.triangle}></span>
+  <span className={classes.navSidebar3Text}>Trang cá nhân</span>
+  </div>
+  </li>
+  </Link>
+              </div>
+                
+                <div onClick={hanldeOpenNav2}>
+
+              <Link href="/user/profile" passHref>
+
+<li style={{cursor:'pointer'}} className={classes.navSidebar3child} >
+
+<div className={classes.navSidebarContent}>
+  <span className={classes.triangle} ></span>
+<span className={classes.navSidebar3Text}>Chỉnh sửa thông tin cá nhân</span>
+  </div>
+  
+</li>
+</Link>
                 </div>
-                </li>
-              <li  className={classes.navSidebar3child}>
-                <div className={classes.navSidebarContent}>
-                <span className={classes.triangle} ></span>
-              <span className={classes.navSidebar3Text}>Chỉnh sửa thông tin cá nhân</span>
-                </div>
-              </li>
               <li  className={classes.navSidebar3child}>
                 <div className={classes.navSidebarContent}>
                 <span className={classes.triangle} ></span><span className={classes.navSidebar3Text}>Đấu trường tri thức</span>

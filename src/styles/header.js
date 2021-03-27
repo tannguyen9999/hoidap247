@@ -435,6 +435,9 @@ const styles = () =>{
           paddingLeft:'12px',
           textAlign: 'left'
         },
+        "&:hover": {
+          background:"#EBC541 ",
+        },
         
         
       },
