@@ -149,7 +149,13 @@ const styles = () =>{
             textOverflow: 'ellipsis',
             display: '-webkit-box',
             '-webkit-line-clamp': '4',
-            '-webkit-box-orient': 'vertical'
+            '-webkit-box-orient': 'vertical',
+            cursor:'pointer',
+            
+            overflowWrap: 'break-word',
+            "&:hover": {
+                textDecoration: 'underline',
+              },
         },
         replayButton:{
             float: 'right',
@@ -165,7 +171,7 @@ const styles = () =>{
             
         },
         seeMore:{
-            
+            cursor:'pointer',
             backgroundColor:'white',
             textAlign:'center',
             fontSize:'15px',

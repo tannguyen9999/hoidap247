@@ -6,7 +6,7 @@ import arrow1 from "../../assets/images/icon-arrow1.png"
 import avatar from "../../assets/images/icon_user.png"
 import iconDown from "../../assets/images/icon-dow2.png"
 import anh1 from "../../assets/images/anh1.jpg"
-let text = "tìm tập hợp A các số nguyên a sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp tìm tập hợp A các số nguyên a sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp"
+let text = "tìm tập hợp A các số nguyêndassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss a aaaaaaaaaasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp tìm tập hợp A các số nguyên a sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp"
 let test = text.split("↵")
 
 const Submenu = ({classes})=>{

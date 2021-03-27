@@ -18,13 +18,14 @@ const Question = ({classes})=>{
                         <li className={classes.itemHeaderQuestion}>Lop 7</li>
                         <li className={classes.itemHeaderQuestion}>vai giay truoc</li>
                     </ul>
-                <div className = {classes.mainContenr}>
+                <div className = {classes.mainContenr} style={{wordWrap:'break-word'}}>
                     anh em oidsaaaaaaaaaaaaaaaaaaaa
                     sadsaddddddddddddddddddddddddd
-                    saddddddddddddddddddddddddddddasdsadsadsa
-                    <br/>dsadasdsad<br/>
+                    saddddddddddddddddddddddddddddasdsadsadsadassssssssssssssss
+                    <br/>dsadasdsaddasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssasdadsdasdasdasdsa<br/>
                     <br/>dasdasdsad<br/>
-                    <br/>dasdasdsad<br/>
+                    <br/>dasdasdsaddasssssssssssssssssssssssssssssssssssssssssssssssss<br/>
+                    dasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
                     <br/>dasdasdsad<br/>
                     <br/>dasdasdsad<br/>
                     <br/>dasdasdsad<br/>
@@ -47,9 +48,9 @@ const Question = ({classes})=>{
                     <img src={anh2} className = {classes.avatarCurrent}></img>
                     <strong style={{paddingLeft:'12px'}}>Ngo Thi NHu Quynh</strong>
                 </div>
-                <div style={{paddingLeft: '45px',width:'50%'}}>
-                    <span style={{maxWidth:'100%'}}>dasssssssssss</span>
-                    <span style={{maxWidth:'100%'}}>saddddddddddda</span><br/>
+                <div style={{paddingLeft: '45px',width:'90%',wordWrap: 'break-word'}}>
+                    <span style={{maxWidth:'100%'}}>dasssssssssssdassssssssssssssssssssssssssssaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
+                    <span style={{maxWidth:'100%'}}>saddddddddddda saddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span><br/>
                     <span style={{maxWidth:'100%'}}>saddddddddddd</span><br/>
                     <span style={{maxWidth:'100%'}}>saddddddddd</span><br/>
                     <span style={{maxWidth:'100%'}}>sadddddddddddsa</span><br/>
