@@ -20,8 +20,7 @@ import PropTypes from 'prop-types';
 import { useRouter } from 'next/router'
 import { isLoading } from './../app/loadingSile';
 import { useDispatch, useSelector } from 'react-redux';
-
-
+import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
@@ -126,7 +125,7 @@ function handleRepo2(){
   setStyleRepo({})
 }
 function handleLogo(){
-  router.push('/');
+  
   setTimeout(function(){
     const changeIsLoading = {
         isLoading: true
@@ -139,9 +138,11 @@ function handleLogo(){
   return (
     <div className ={classes.header}>
         <div className={classes.center}>
-          <div className={classes.logo} onClick={handleLogo}>
- 
-          </div>
+          <Link href="/">
+          <div className={classes.logo} onClick={handleLogo}></div>
+            
+          </Link>
+
         {/* <img src={logo} alt="Logo" className={classes.logo}></img> */}
         <div className={classes.sectionSearch} style={styleRepo}>
             <input onFocus={handleRepo} onBlur={handleRepo2} placeholder={valuePlaceSearch} type="text"  className={classes.searchInput}/>

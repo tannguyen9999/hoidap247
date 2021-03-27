@@ -137,7 +137,8 @@ const styles = () =>{
         },
         avatar:{
             width:'32px',
-            height:'32px'
+            height:'32px',
+            objectFit:'cover'
         },
         textQuestion:{
             fontSize:'15px',
