@@ -3,12 +3,24 @@ import {withStyles} from '@material-ui/core';
 import styles from "../styles/profile"
 import image from "../assets/images/chipu.jpg"
 import loadingAvatarr from "../assets/images/Loading22.gif"
+import { isLoading } from './../app/loadingSile';
+import { useDispatch, useSelector } from 'react-redux';
+
 const Profile = ({classes})=>{  
     const inputEl = useRef(null);
     const [changePass,setChangePass] = useState(false);
     const [avatar,setAvatar] = useState({
         src:image
     })
+    const dispatch = useDispatch();
+
+    setTimeout(function(){
+        const changeIsLoading2 = {
+            isLoading: false
+          };
+        const action2 = isLoading(changeIsLoading2);
+        dispatch(action2);
+     }, 100);
 
     function handleChangePass(){
         setChangePass(!changePass)

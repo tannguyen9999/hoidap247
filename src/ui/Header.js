@@ -210,9 +210,9 @@ function handleLoading(){
             onClick={hanldeOpenNav2}
             ></img>
               <div onClick={hanldeOpenNav2}>
-              <Link href="/user/profile" onClick={handleLoading} passHref>
+              <Link href="/user/profile"  passHref>
 
-<li  className={classes.navSidebar3child} style={{cursor:'pointer'}}>
+<li  className={classes.navSidebar3child} onClick={handleLoading} style={{cursor:'pointer'}}>
   <div className={classes.navSidebarContent}>
   <span className={classes.triangle}></span>
   <span className={classes.navSidebar3Text}>Trang cá nhân</span>
@@ -225,7 +225,7 @@ function handleLoading(){
 
               <Link href="/user/profile" passHref>
 
-<li style={{cursor:'pointer'}} className={classes.navSidebar3child} >
+<li style={{cursor:'pointer'}} className={classes.navSidebar3child} onClick={handleLoading}>
 
 <div className={classes.navSidebarContent}>
   <span className={classes.triangle} ></span>
