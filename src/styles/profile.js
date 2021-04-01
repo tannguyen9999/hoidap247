@@ -13,7 +13,9 @@ const styles = () =>{
             marginLeft:'auto',
             marginRight:'auto',
             flexDirection:'column',
-            borderRadius:'10px'
+            borderRadius:'10px',
+            boxSizing:'border-box',
+            textAlign:'center'
         },
         headerContent:{
             display:'flex',
@@ -116,7 +118,7 @@ const styles = () =>{
             marginLeft:'12px',
             outline:'none',
             fontSize:'15px',
-            maxWidth:'40%'
+            maxWidth:'50%'
         },
         update:{
             padding:'8px 16px',
@@ -132,6 +134,14 @@ const styles = () =>{
               },
             float:'right',
             marginBottom:'24px'
+        },
+        subtitle:{
+            width: '160px',
+            textAlign: 'end',
+            ['@media (max-width:1022px)']: {
+              width:'auto',  
+            },
+                            
         }
 
 

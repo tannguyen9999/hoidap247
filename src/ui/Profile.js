@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import {withStyles} from '@material-ui/core';
 import styles from "../styles/profile"
 import image from "../assets/images/chipu.jpg"
+import loadingAvatar from "../assets/images/Loading22.gif"
 const Profile = ({classes})=>{  
     const inputEl = useRef(null);
     const [changePass,setChangePass] = useState(false);
@@ -29,10 +30,13 @@ const Profile = ({classes})=>{
     
             fileReader.readAsDataURL(file);
             // setLoading(true);
+            
              fileReader.onload = (e) => {
                  
                 const result = fileReader.result;
-                
+                setAvatar({
+                    src:loadingAvatar
+                })
                 if(result){
                     
                     // setLoading(false);
@@ -44,6 +48,9 @@ const Profile = ({classes})=>{
                 return 
             };
         }else{
+            setAvatar({
+                src:image
+            })
             alert('Vui lòng chọn định dạng hình ảnh')
         }
             
@@ -89,30 +96,18 @@ const Profile = ({classes})=>{
                     </div>
                 </div>
                 <div style={changePass ? {display:'block'}:{}} className={classes.passWord}>
-                    <div style={{display:'flex',margin:'12px 0px',alignItems:'center'}}>
-                    <div style={{
-                            width: '160px',
-                            textAlign: 'end',
-                            
-                    }}>Nhập mật khẩu cũ</div>
+                    <div style={{display:'flex',margin:'12px 0px',alignItems:'center',justifyContent: 'space-between'}}>
+                    <div  className={classes.subtitle}>Nhập mật khẩu cũ</div>
                     <input className = {classes.pass}></input>
                     </div>
 
-                    <div style={{display:'flex',margin:'12px 0px',alignItems:'center'}}>
-                    <div style={{
-                            width: '160px',
-                            textAlign: 'end',
-                            
-                    }}>Nhập mật khẩu mới</div>
+                    <div style={{display:'flex',margin:'12px 0px',alignItems:'center',justifyContent: 'space-between'}}>
+                    <div className={classes.subtitle}>Nhập mật khẩu mới</div>
                     <input className = {classes.pass}></input>
                     </div>
 
-                    <div style={{display:'flex',margin:'12px 0px',alignItems:'center'}}>
-                    <div style={{
-                            width: '160px',
-                            textAlign: 'end',
-                            
-                    }}>Xác nhận mật khẩu mới</div>
+                    <div style={{display:'flex',margin:'12px 0px',alignItems:'center',justifyContent: 'space-between'}}>
+                    <div className={classes.subtitle}>Xác nhận mật khẩu mới</div>
                     <input className = {classes.pass}></input>
                     </div>
                     <button className={classes.update} >Cập nhật </button>
