@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import {withStyles} from '@material-ui/core';
 import styles from "../styles/profile"
 import image from "../assets/images/chipu.jpg"
-import loadingAvatar from "../assets/images/Loading22.gif"
+import loadingAvatarr from "../assets/images/Loading22.gif"
 const Profile = ({classes})=>{  
     const inputEl = useRef(null);
     const [changePass,setChangePass] = useState(false);
@@ -27,16 +27,17 @@ const Profile = ({classes})=>{
         //     reader.readAsDataURL(file)
         if(file && (file.type == "image/jpeg" || file.type == "image/png")){
             const fileReader = new FileReader();
-    
+            
             fileReader.readAsDataURL(file);
             // setLoading(true);
+            setAvatar({
+                src:loadingAvatarr
+            })
             
              fileReader.onload = (e) => {
                  
                 const result = fileReader.result;
-                setAvatar({
-                    src:loadingAvatar
-                })
+                
                 if(result){
                     
                     // setLoading(false);
@@ -48,9 +49,6 @@ const Profile = ({classes})=>{
                 return 
             };
         }else{
-            setAvatar({
-                src:image
-            })
             alert('Vui lòng chọn định dạng hình ảnh')
         }
             
