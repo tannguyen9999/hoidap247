@@ -6,7 +6,7 @@ const styles = () =>{
     return({
         homePage:{
             width:'620px',
-            backgroundColor:'',
+            backgroundColor:'#ECEFF1',
             marginTop:'12px',
             ['@media (max-width:1022px)']: {
                 width:'95%',

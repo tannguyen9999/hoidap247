@@ -11,6 +11,7 @@ const styles = () =>{
             marginRight:'auto',
             maxWidth:'100%',
             display:'flex',
+            backgroundColor:'#ECEFF1',
             
             ['@media (max-width:1022px)']: {
                 marginTop:'70px',

@@ -11,8 +11,7 @@ import store from '../src/app/store';
 import Loading from '../src/component/Loading.js/Loading'
 
 
-function MyApp({ Component, pageProps,isLogin }) {
-  
+function MyApp({ Component, pageProps,isLogin,idAudth}) {
   return (
     <Provider store={store}>
     <React.Fragment>
@@ -27,7 +26,7 @@ function MyApp({ Component, pageProps,isLogin }) {
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"></link>
       </Head>
       <ThemeProvider theme = {Theme}>
-      <Header isLog={isLogin} ></Header>
+      <Header isAudth={idAudth} isLog={isLogin} ></Header>
         <Component
           {...pageProps}
         />
@@ -39,7 +38,9 @@ function MyApp({ Component, pageProps,isLogin }) {
   );
 }
 
-MyApp.getInitialProps = async ({ Component, ctx }) => {
+MyApp.getInitialProps = async ({ Component, ctx}) => {
+  const idAuth = ctx?.pathname == '/login' || ctx?.pathname == '/signup' ? true:false ;
+
   const allCookies = cookies(ctx);
   let isLogin = false;     
   try {
@@ -51,6 +52,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   }
   return {
     isLogin:isLogin,
+    idAudth:idAuth,
     pageProps: {
       ...(Component.getInitialProps
         ? await Component.getInitialProps(ctx)

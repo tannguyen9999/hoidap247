@@ -12,7 +12,7 @@ const Home = ({token ,classes,isLogin }) => {
     setCookie('token','a')
   });
     return (
-    <div>
+    <div style={{background:'#ECEFF1'}}>
        <Head>
         <title>Hoidap247.com - Hỏi đáp bài tập nhanh, chính xác, miễn phí</title>
         

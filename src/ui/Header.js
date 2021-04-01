@@ -35,7 +35,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const ButtonAppBar = ({ classes,isLog })=> {
+const ButtonAppBar = ({ classes,isLog,isAudth })=> {
+
+
   const dispatch = useDispatch();
   const router = useRouter()
 
@@ -136,7 +138,7 @@ function handleLoading(){
   return;
 }
   return (
-    <div className ={classes.header}>
+    <div  className ={classes.header}>
         <div className={classes.center}>
           <Link href="/" passHref>
           <div className={classes.logo} onClick={handleLoading}></div>
@@ -144,7 +146,7 @@ function handleLoading(){
           </Link>
 
         {/* <img src={logo} alt="Logo" className={classes.logo}></img> */}
-        <div className={classes.sectionSearch} style={styleRepo}>
+        <div className={classes.sectionSearch} style={isAudth ? {display:'none'} :styleRepo}>
             <input onFocus={handleRepo} onBlur={handleRepo2} placeholder={valuePlaceSearch} type="text"  className={classes.searchInput}/>
             <img src={iconSearchMini} alt="icon search" className={classes.iconSearchMini}></img>
             <button className={classes.searchButton}>Tìm</button>
@@ -260,7 +262,8 @@ function handleLoading(){
   );
 } 
 ButtonAppBar.propTypes = {
-  isLogin: PropTypes.bool
+  isLogin: PropTypes.bool,
+  isAudth:PropTypes.bool
 };
 
 export default withStyles(styles)(ButtonAppBar)
