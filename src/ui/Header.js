@@ -108,7 +108,7 @@ const ButtonAppBar = ({ classes,isLog })=> {
           position:'fixed',
           left:'6px',
           right:'0px',
-          top:'12px',
+          top:'10px',
           paddingLeft:'10px',
           paddingRight:'10px',
           backgroundColor:'white',
