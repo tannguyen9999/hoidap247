@@ -106,7 +106,7 @@ const ButtonAppBar = ({ classes,isLog })=> {
       setStyleRepo(
         {
           position:'fixed',
-          left:'6px',
+          left:'0px',
           right:'0px',
           top:'10px',
           paddingLeft:'10px',

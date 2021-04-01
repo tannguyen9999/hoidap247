@@ -66,11 +66,14 @@ const styles = () =>{
         padding:'0 0px',
         backgroundColor:'white',
         marginRight:'12px', 
+        
 
        transitionimingFunction: 'ease',
         flex:'1',
         ['@media (max-width:649px)']: {
           marginLeft:'0px',
+          backgroundColor:'#e2e2e2',
+          borderRadius:'15px',
         },
         
         
