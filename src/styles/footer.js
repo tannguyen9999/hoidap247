@@ -23,7 +23,9 @@ const styles = () =>{
             width:'336px',
             padding:'12px',
             color:'white',
-            fontSize:'15px'
+            fontSize:'15px',
+            maxWidth:'100%',
+            boxSizing:'border-box'
         },
         imaCom:{
             display:'block',
@@ -51,6 +53,8 @@ const styles = () =>{
             marginLeft:'24px',
             paddingTop:'12px',
             color:'white',
+            maxWidth:'80%',
+            boxSizing:'border-box'
             
         },
         section3:{

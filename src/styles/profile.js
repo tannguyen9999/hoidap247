@@ -46,7 +46,8 @@ const styles = () =>{
         section2:{
             display:'flex',
             flexDirection:'column',
-            alignItems:'center'
+            alignItems:'center',
+            boxSizing:'border-box'
             
         },
         headerSection2:{
@@ -66,11 +67,13 @@ const styles = () =>{
             padding:'6px',
             fontSize:'15px',
             width:'212px',
+            
             borderRadius:'4px',    
             border: '1px solid #e1e1e1'},
 
             
         birthdayform:{
+            
             background:'white',
             marginLeft:'24px',
             outline:'none',
@@ -112,7 +115,8 @@ const styles = () =>{
             height:'30px',
             marginLeft:'12px',
             outline:'none',
-            fontSize:'15px'
+            fontSize:'15px',
+            maxWidth:'40%'
         },
         update:{
             padding:'8px 16px',

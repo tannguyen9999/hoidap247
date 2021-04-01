@@ -22,6 +22,12 @@ html{
     height:300px;
     overflow:auto
 }
+@media screen and (max-width: 639px) {
+  .selectClass{
+    left: 10px;
+  }
+  
+}
 .selectStatus{
   list-style:none;
   position : absolute;
@@ -32,6 +38,12 @@ html{
   border: 1px solid #458ea7;
   border-radius:5px;
   box-shadow:rgb(0 0 0 / 10%) 3px 3px 5px 0px;
+  
+}
+@media screen and (max-width: 639px) {
+  .selectStatus{
+    left: 126px;
+  }
   
 }
 .selectClass::-webkit-scrollbar{

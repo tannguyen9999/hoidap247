@@ -48,7 +48,11 @@ const styles = () =>{
             borderRadius:'5px',
             display:'flex',
             justifyContent:'center',
-            cursor:'pointer'
+            cursor:'pointer',
+            ['@media (max-width:639px)']: {
+                marginRight:'12px',
+            marginLeft:'12px',
+            },
         },
         filterStatus:{
             width:'180px',
@@ -60,6 +64,9 @@ const styles = () =>{
             display:'flex',
             justifyContent:'center' ,
             cursor:'pointer',
+            ['@media (max-width:1022px)']: {
+                
+            },
             
                
         },

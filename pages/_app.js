@@ -10,7 +10,9 @@ import { Provider } from 'react-redux';
 import store from '../src/app/store';
 import Loading from '../src/component/Loading.js/Loading'
 
+
 function MyApp({ Component, pageProps,isLogin }) {
+  
   return (
     <Provider store={store}>
     <React.Fragment>

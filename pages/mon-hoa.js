@@ -6,7 +6,8 @@ import {setCookie} from '../src/util/cookies'
 import Head from "next/head";
 import MainBoard from "../src/ui/Main"
 
-const Home = ({token ,classes,isLogin }) => {     
+const Home = ({token ,classes,isLogin }) => {
+    
     useEffect(() => {
     setCookie('token','a')
   });
