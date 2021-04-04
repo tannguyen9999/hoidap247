@@ -22,20 +22,10 @@ import { isLoading } from './../app/loadingSile';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link'
 
-const useStyles = makeStyles((theme) => ({
-  toolbarMargin: {
-    height: "52px",
-    boxShadow: "0px 0px 5px 1px #2626262b",
-    
-    [theme.breakpoints.down("md")]: {
-      height: "46px",
-    
-    },
-  }
-}));
 
 
-const ButtonAppBar = ({ classes,isLog,isAudth })=> {
+
+const ButtonAppBar = ({ classes,isLog,isAudth,isName,isStartDay })=> {
 
 
   const dispatch = useDispatch();
@@ -146,7 +136,7 @@ function handleLoading(){
           </Link>
 
         {/* <img src={logo} alt="Logo" className={classes.logo}></img> */}
-        <div className={classes.sectionSearch} style={isAudth ? {display:'none'} :styleRepo}>
+        <div className={classes.sectionSearch} style={isAudth ? {display:'none'} :{}}>
             <input onFocus={handleRepo} onBlur={handleRepo2} placeholder={valuePlaceSearch} type="text"  className={classes.searchInput}/>
             <img src={iconSearchMini} alt="icon search" className={classes.iconSearchMini}></img>
             <button className={classes.searchButton}>Tìm</button>
@@ -191,7 +181,7 @@ function handleLoading(){
             </li>
             <li className={classes.navUserMore} onClick={hanldeOpenNav2}>
             <i className="fas fa-angle-double-down"></i>
-            <span className={classes.navUserName}>N16dcdt076@gmail.com</span>
+            <span className={classes.navUserName}>{isName}</span>
             </li>
             
            <div>
@@ -263,7 +253,8 @@ function handleLoading(){
 } 
 ButtonAppBar.propTypes = {
   isLogin: PropTypes.bool,
-  isAudth:PropTypes.bool
+  isAudth:PropTypes.bool,
+  isName:PropTypes.string,
 };
 
 export default withStyles(styles)(ButtonAppBar)

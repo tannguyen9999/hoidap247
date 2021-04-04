@@ -6,10 +6,24 @@ import arrow1 from "../../assets/images/icon-arrow1.png"
 import avatar from "../../assets/images/icon_user.png"
 import iconDown from "../../assets/images/icon-dow2.png"
 import anh1 from "../../assets/images/anh1.jpg"
+import anhvip2 from "../../assets/images/anhvip2.jpeg"
+
+import TimeAgo from 'javascript-time-ago';
+import vi from 'javascript-time-ago/locale/vi';
+import productApi from '../../api/productApi'
+import contentSlideBar from '../../util/Contants/contentSlideBar'
+
+TimeAgo.addLocale(vi);
+const timeAgo = new TimeAgo('vi-VN');
 let text = "tìm tập hợp A các số nguyêndassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss a aaaaaaaaaasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp tìm tập hợp A các số nguyên a sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp"
 let test = text.split("↵")
+let offset = 0;
+let limit = 10;
+let offset1 = 0;
+let onAdd = false;
 
-const Submenu = ({classes})=>{
+const Submenu = ({classes,isResult,isActive})=>{
+    
     const [openNav,setOpenNav] = useState({
         openStatus:false,
         openClass:false,
@@ -21,6 +35,15 @@ const Submenu = ({classes})=>{
         index:'0',
         value:'Tất cả'
     })
+    const [classs,setChooseClasss] = useState(0)
+    const [classs2,setChooseClasss2] = useState(0)
+
+
+
+    const [dataMap,setDataMap] = useState([])
+
+
+    
 
     const handleListClass = ()=>{
         const data =  listClass.map((item,index)=>{
@@ -31,12 +54,67 @@ const Submenu = ({classes})=>{
         return data
         
     }
-    const handleDta = ()=>{
-        const data =  test.map((temp,i)=>{
+    const handleDta1 = (text)=>{
+        let textChange = text.split("↵")
+
+        const data =  textChange.map((temp,i)=>{
             return(
                 <span key={i}>{temp}<br/></span>
             )
         })
+        return data
+        
+    }
+    async function handleClickChangeClass(key,off,lim){
+        let daReq = {
+            offset:off.toString(),
+            limit:lim.toString()
+          }
+        
+        if(key !== '0'){
+            daReq.class = key;
+        }
+        if(isActive !== 0){
+            daReq.subject = contentSlideBar[isActive].text;
+        }
+        
+        try {
+            const res = await productApi.getListPostOption(daReq)
+              
+
+              return res.posts
+        } catch (error) {
+            return []
+        }
+    }
+    const handleAllData = ()=>{
+        let data;
+       if(classs == 0 && classs2 == 0){
+           data = isResult
+       }else{
+           data = dataMap;
+       }
+             data =  data.map((temp,i)=>{
+                return(
+                    <div key={temp._id} className={classes.itemQuestion}>
+                        <ul key ={i} className={classes.headerQuestion} >
+                            <li className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={temp.userId.avatar !== "" ? temp.userId.avatar:anhvip2} alt='avatarUser'></img></li>
+                            <li className={classes.itemHeaderQuestion}>{temp.subject}</li>
+                            <li className={classes.itemHeaderQuestion}>{`Lớp ${temp.class}`}</li>
+                            <li className={classes.itemHeaderQuestion}>{
+                            timeAgo.format(new Date(temp.createdAt), 'round')
+                            }</li>
+                        </ul>
+                        <div key = {i} className={classes.textQuestion} >    
+    
+                        {handleDta1(temp.content)}
+                        </div>
+                        <a key={i} className={classes.replayButton}>Trả lời</a>
+                    </div>
+                )
+            })
+        
+        
         return data
         
     }
@@ -105,16 +183,46 @@ const Submenu = ({classes})=>{
         return;
 
     }
-    function handleClickClass(e){
+    async function handleClickClass(e){
         const key = e.target.dataset.key;
         setOpenNav({
             openStatus:false,
             openClass:false,
             open:false
         })
-        setCurrentClass(`${key}` )
+        const result = await handleClickChangeClass(key,0,limit);
+        offset = 0;
+        setDataMap(result);   
+
+        setCurrentClass(`${key}`)
+        setChooseClasss(1)
+
         return;
 
+    }
+    useEffect(() => {
+        // action on update of movies
+        
+    async function test(){
+        
+           const result = await handleClickChangeClass(currentClass,offset,limit)
+            setDataMap([...dataMap, ...result]);
+        }
+            test()
+        
+        
+     
+        
+        
+    }, [classs2]);
+    
+    async function handleSeeMore(){
+        // offset = offset +10;
+        // const result = await handleClickChangeClass(currentClass,offset,limit)
+        offset = offset +10;
+        setChooseClasss2(classs2+1)
+        // setDataMap([...dataMap, ...result]);
+        return
     }
     return(
         (
@@ -136,73 +244,10 @@ const Submenu = ({classes})=>{
                     </ul>
             </ul>
             <div className = {classes.listQuestion}>
-                <div className={classes.itemQuestion}>
-                    <ul className={classes.headerQuestion} >
-                        <li className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={avatar} alt='avatarUser'></img></li>
-                        <li className={classes.itemHeaderQuestion}>Toán Học</li>
-                        <li className={classes.itemHeaderQuestion}>Lop 7</li>
-                        <li className={classes.itemHeaderQuestion}>vai giay truoc</li>
-                    </ul>
-                    <div className={classes.textQuestion} >    
-
-                    {handleDta()}
-                    </div>
-                    <a className={classes.replayButton}>Trả lời</a>
-                </div>
-                 <div className={classes.itemQuestion}>
-                    <ul className={classes.headerQuestion} >
-                        <li className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={avatar} alt='avatarUser'></img></li>
-                        <li className={classes.itemHeaderQuestion}>Toán Học</li>
-                        <li className={classes.itemHeaderQuestion}>Lop 7</li>
-                        <li className={classes.itemHeaderQuestion}>vai giay truoc</li>
-                    </ul>
-                    <div className={classes.textQuestion} >    
-
-                    {handleDta()}
-                    </div>
-                    <a className={classes.replayButton}>Trả lời</a>
-                </div>
-                <div className={classes.itemQuestion}>
-                    <ul className={classes.headerQuestion} >
-                        <li className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={avatar} alt='avatarUser'></img></li>
-                        <li className={classes.itemHeaderQuestion}>Toán Học</li>
-                        <li className={classes.itemHeaderQuestion}>Lop 7</li>
-                        <li className={classes.itemHeaderQuestion}>vai giay truoc</li>
-                    </ul>
-                    <div className={classes.textQuestion} >    
-
-                    {handleDta()}
-                    </div>
-                    <a className={classes.replayButton}>Trả lời</a>
-                </div>
-                <div className={classes.itemQuestion}>
-                    <ul className={classes.headerQuestion} >
-                        <li className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={avatar} alt='avatarUser'></img></li>
-                        <li className={classes.itemHeaderQuestion}>Toán Học</li>
-                        <li className={classes.itemHeaderQuestion}>Lop 7</li>
-                        <li className={classes.itemHeaderQuestion}>vai giay truoc</li>
-                    </ul>
-                    <div className={classes.textQuestion} >    
-
-                    {handleDta()}
-                    </div>
-                    <a className={classes.replayButton}>Trả lời</a>
-                </div>
-                <div className={classes.itemQuestion}>
-                    <ul className={classes.headerQuestion} >
-                        <li className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={anh1} alt='avatarUser'></img></li>
-                        <li className={classes.itemHeaderQuestion}>Toán Học</li>
-                        <li className={classes.itemHeaderQuestion}>Lop 7</li>
-                        <li className={classes.itemHeaderQuestion}>vai giay truoc</li>
-                    </ul>
-                    <div className={classes.textQuestion} >    
-
-                    {handleDta()}
-                    </div>
-                    <a className={classes.replayButton}>Trả lời</a>
-                </div>
+                {handleAllData()}
+                
             </div>
-            <div className={classes.seeMore}>Xem thêm<img className={classes.arrow1} src={arrow1} alt='arrow 1'></img></div>
+            <div onClick={handleSeeMore} className={classes.seeMore}>Xem thêm<img className={classes.arrow1} src={arrow1} alt='arrow 1'></img></div>
         </div>
         )
     )

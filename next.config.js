@@ -11,7 +11,7 @@ module.exports = withPlugins([
       /* config for next-optimized-images */
       withImages,
       env: {
-        api: 'http://api.vietfunnels.com/api',
+        api: 'https://hocgioi.herokuapp.com/api',
       },
       
     },

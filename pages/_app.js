@@ -11,10 +11,11 @@ import store from '../src/app/store';
 import Loading from '../src/component/Loading.js/Loading'
 
 
-function MyApp({ Component, pageProps,isLogin,idAudth}) {
+function MyApp({ Component, pageProps,isLogin,idAudth,name,startDay}) {
   return (
     <Provider store={store}>
     <React.Fragment>
+      
       <Head>
         <title>My page</title>
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
@@ -25,8 +26,9 @@ function MyApp({ Component, pageProps,isLogin,idAudth}) {
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"></link>
       </Head>
+     
       <ThemeProvider theme = {Theme}>
-      <Header isAudth={idAudth} isLog={isLogin} ></Header>
+      <Header isAudth={idAudth} isLog={isLogin} isName={name} isStartDay = {startDay}></Header>
         <Component
           {...pageProps}
         />
@@ -42,9 +44,11 @@ MyApp.getInitialProps = async ({ Component, ctx}) => {
   const idAuth = ctx?.pathname == '/login' || ctx?.pathname == '/signup' ? true:false ;
 
   const allCookies = cookies(ctx);
-  let isLogin = false;     
+  let isLogin = false;
+  const name = allCookies.name; 
+  const startDay =  allCookies.startDay
   try {
-    if(allCookies.token == 'a'){
+    if(allCookies.token && name && startDay){
       isLogin = true;
     }
   } catch (error) {
@@ -53,6 +57,8 @@ MyApp.getInitialProps = async ({ Component, ctx}) => {
   return {
     isLogin:isLogin,
     idAudth:idAuth,
+    name:name,
+    startDay:startDay,
     pageProps: {
       ...(Component.getInitialProps
         ? await Component.getInitialProps(ctx)

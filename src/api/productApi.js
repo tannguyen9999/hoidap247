@@ -5,9 +5,21 @@ const productApi = {
     const url = `/users/${id}`;
     return GET({ url });
   },
+  signUp: data => {
+    const url = `/auth/register`;
+    return POST({ url, data });
+  },
   logIn: data => {
     const url = `/auth/login`;
     return POST({ url, data });
+  },
+  getListPost: (data) => {
+    const url = `/post/`;
+    return GET({ url,data });
+  },
+  getListPostOption: (data) => {
+    const url = `/post/option/`;
+    return POST({ url,data });
   },
   getListUser: (offset, limit) => {
     const url = `/users?offset=${offset}&limit=${limit}`;

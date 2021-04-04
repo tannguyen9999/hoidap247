@@ -31,6 +31,7 @@ const styles = () =>{
             height:'56px',
             borderRadius:'15px',
             border: '1px solid #458ea7',
+            objectFit: 'cover'
 
         },
         infoUser:{

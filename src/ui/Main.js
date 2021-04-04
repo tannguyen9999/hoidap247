@@ -18,7 +18,7 @@ import Event from '../component/Event/Event'
 
 
 
-const MainBoard = ({ classes,isActive })=> {
+const MainBoard = ({ classes,isActive,isName,isStartDay,isLogin,isAvatar,isResult })=> {
     const dispatch = useDispatch();
         setTimeout(function(){
             const changeIsLoading2 = {
@@ -35,8 +35,8 @@ const MainBoard = ({ classes,isActive })=> {
 
     return(<div className = {classes.overMain}>
         <Submenu isActive = {isActive}></Submenu>
-        <HomePage></HomePage>
-        <Event></Event>
+        <HomePage isActive ={isActive} isResult={isResult}></HomePage>
+        <Event isName={isName} isStartDay={isStartDay} isLogin={isLogin} isAvatar={isAvatar}></Event>
 
         <AskQuestion></AskQuestion>
        
@@ -44,7 +44,12 @@ const MainBoard = ({ classes,isActive })=> {
 }
 
 MainBoard.propTypes = {
-    isActive: PropTypes.number
+    isActive: PropTypes.number,
+    isName:PropTypes.string,
+    isStartDay:PropTypes.string,
+    isLogin:PropTypes.bool,
+    isAvatar:PropTypes.string,
+    isResult: PropTypes.array
   };
   
 export default withStyles(styles)(MainBoard)

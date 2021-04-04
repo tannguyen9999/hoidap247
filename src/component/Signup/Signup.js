@@ -13,6 +13,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import productApi from '../../api/productApi'
+import { useRouter } from 'next/router'
 
 function Copyright() {
   return (
@@ -48,17 +50,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const router = useRouter()
   const classes = useStyles();
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log( 'Name',name,'Email:', email, 'Password: ', password); 
-   // You should see email and password in console.
-   // ..code to submit form to backend here...
+    const data = {
+      email:email,
+      password:password,
+      name:name
+    }
+    try {
+      const res = await productApi.signUp(data)
+      alert("Đăng ký thành công !!!")
+      router.push('/login')
+      return
+    } catch (error) {
+      try {
+        alert(error.response.data.message) ;
+      } catch (error) {
+        
+      }
+      return
+    }
+    return;
+  
+   
+   return
 
 }
 

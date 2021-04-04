@@ -22,12 +22,14 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.1.0",
     "isomorphic-fetch": "^3.0.0",
+    "javascript-time-ago": "^2.3.4",
     "js-cookie": "^2.2.1",
     "next": "latest",
     "next-compose-plugins": "^2.2.0",
     "next-cookies": "^2.0.3",
     "next-images": "^1.7.0",
     "next-optimized-images": "^2.5.4",
+    "nextjs-redirect": "^5.0.2",
     "prop-types": "latest",
     "query-string": "^4.3.4",
     "react": "latest",
@@ -38,6 +40,8 @@
     "react-lazy-load-image-component": "^1.4.3",
     "react-lottie": "^1.2.3",
     "react-redux": "^7.2.3",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3"
   },
   "scripts": {

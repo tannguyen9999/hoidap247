@@ -13,7 +13,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from 'next/link'
-
+import productApi from '../../api/productApi'
+import { useRouter } from 'next/router'
+import {setCookie} from '../../util/cookies'
+import redirect from 'nextjs-redirect'
 
 
 
@@ -41,10 +44,38 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const classes = useStyles();
+  const router = useRouter()
 
-  function handleSubmit(event) {
+
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log( 'Email:', email, 'Password: ', password); 
+    const data = {
+      email:email,
+      password:password
+    }
+    try {
+      const res = await productApi.logIn(data)
+      const {token} = res;
+      const {startDay,name,avatar} = res.user
+      setCookie("token",token)
+      setCookie("startDay",startDay)
+      setCookie("name",name)
+      setCookie("avatar",avatar)
+
+      
+      window.location.href = "/"
+
+      
+      return
+    } catch (error) {
+      try {
+        alert(error.response.data.message)
+    
+      } catch (error) {
+        
+      }
+      return
+    }
    // You should see email and password in console.
    // ..code to submit form to backend here...
 

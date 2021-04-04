@@ -1,14 +1,15 @@
+import { getCookieFromBrowser } from '../util/cookies';
 import axiosClient from './axiosClient';
 
 const getHeaders = () => {
-  const token = "localStorage.getItem('accessToken')";
+  const token = getCookieFromBrowser("token");
   let Authorization = `Bearer ${token}`;
   return {
     headers: { Authorization }
   };
 };
 
-export const GET = async ({ url }) => {
+export const GET = async ({ url  }) => {
   return axiosClient.get(url, getHeaders());
 };
 
