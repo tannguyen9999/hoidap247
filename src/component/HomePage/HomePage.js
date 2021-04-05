@@ -94,7 +94,7 @@ const Submenu = ({classes,isResult,isActive})=>{
 
         const data =  textChange.map((temp,i)=>{
             return(
-                <span key={nanoid(10)}>{temp}<br/></span>
+                <>{temp}<br/></>
             )
         })
         return data

@@ -19,6 +19,7 @@ const Question = ({classes})=>{
                         <li className={classes.itemHeaderQuestion}>vai giay truoc</li>
                     </ul>
                 <div className = {classes.mainContenr} style={{wordWrap:'break-word'}}>
+                    <div>
                     anh em oidsaaaaaaaaaaaaaaaaaaaa
                     sadsaddddddddddddddddddddddddd
                     saddddddddddddddddddddddddddddasdsadsadsadassssssssssssssss
@@ -33,6 +34,7 @@ const Question = ({classes})=>{
                     <br/>dasdasdsad<br/>
                     <br/>dasdasdsad<br/>
                     <br/>dasdasdsad<br/>
+                    </div>
                 </div>
                 <div className={classes.contentImage}>
                     <img src={anh2} className={classes.contentImage2}></img>

@@ -158,6 +158,8 @@ const styles = () =>{
             '-webkit-line-clamp': '4',
             '-webkit-box-orient': 'vertical',
             cursor:'pointer',
+            wordBreak: 'break-all',
+
             
             overflowWrap: 'break-word',
             "&:hover": {
