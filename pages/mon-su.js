@@ -2,14 +2,11 @@ import React, { useEffect } from 'react';
 import {withStyles} from '@material-ui/core';
 import styles from "../src/styles/header"
 import cookies from 'next-cookies'
-import {setCookie} from '../src/util/cookies'
 import Head from "next/head";
 import MainBoard from "../src/ui/Main"
+import productApi from "../src/api/productApi"
 
-const Home = ({token ,classes,isLogin }) => {     
-    useEffect(() => {
-    setCookie('token','a')
-  });
+const Home = ({isLogin ,name,startDay,avatar,result, }) => {    
     return (
     <div style={{background:'#ECEFF1'}}>
        <Head>
@@ -17,14 +14,37 @@ const Home = ({token ,classes,isLogin }) => {
         
       </Head>
   
-      <MainBoard isActive={7} />
+      <MainBoard isActive={7} isLogin={isLogin} isName = {name} isStartDay={startDay} isAvatar={avatar} isResult = {result} />
     </div>
 )};
 Home.getInitialProps = async (ctx) => {
   const allCookies = cookies(ctx);
+  let isLogin = false; 
+  const name = allCookies.name; 
+  const startDay =  allCookies.startDay
+  const avatar = allCookies.avatar
+  if(allCookies.token && name && startDay){
+    isLogin = true;
+  }
+  let result
+  try {
+    const res = await productApi.getListPostOption({
+      offset:'0',
+      limit:'10',
+      subject:'Lịch Sử'
+    })
+    result = res.posts
+  } catch (error) {
+    
+  }
 
-    return { token: 'a',
-    isLoginb:'isLogin'
+
+    return {
+      result:result,
+    isLogin:isLogin,
+    name:name,
+    startDay:startDay,
+    avatar:avatar
     }
   }
 

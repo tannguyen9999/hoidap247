@@ -12,6 +12,7 @@ import TimeAgo from 'javascript-time-ago';
 import vi from 'javascript-time-ago/locale/vi';
 import productApi from '../../api/productApi'
 import contentSlideBar from '../../util/Contants/contentSlideBar'
+import { nanoid } from 'nanoid'
 
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
@@ -53,9 +54,6 @@ const Submenu = ({classes,isResult,isActive})=>{
     async function runConTract(){
         if(contract){
             try {
-                console.log("run contract")
-                console.log(offset)
-                console.log('limit',limit)
                 offset = 10;
                 
                 const result = await Promise.all(
@@ -85,7 +83,7 @@ const Submenu = ({classes,isResult,isActive})=>{
     const handleListClass = ()=>{
         const data =  listClass.map((item,index)=>{
             return(
-                <li key={index} data-key={index} onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>{item.text}</li>
+                <li key={nanoid(10)} data-key={index} onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>{item.text}</li>
             ) 
         })
         return data
@@ -96,7 +94,7 @@ const Submenu = ({classes,isResult,isActive})=>{
 
         const data =  textChange.map((temp,i)=>{
             return(
-                <span key={i}>{temp}<br/></span>
+                <span key={nanoid(10)}>{temp}<br/></span>
             )
         })
         return data
@@ -129,15 +127,13 @@ const Submenu = ({classes,isResult,isActive})=>{
        if(classs == 0 && classs2 == 0){
            data = isResult
        }else{
-           console.log("render Data")
-           console.log(dataMap)
            data = dataMap;
        }
        
              data =  data.map((temp,i)=>{
                 return(
                     <div key={temp._id} className={classes.itemQuestion}>
-                        <ul key ={i} className={classes.headerQuestion} >
+                        <ul key ={nanoid(11)} className={classes.headerQuestion} >
                             <li className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={temp.userId.avatar !== "" ? temp.userId.avatar:anhvip2} alt='avatarUser'></img></li>
                             <li className={classes.itemHeaderQuestion}>{temp.subject}</li>
                             <li className={classes.itemHeaderQuestion}>{`Lớp ${temp.class}`}</li>
@@ -145,11 +141,11 @@ const Submenu = ({classes,isResult,isActive})=>{
                             timeAgo.format(new Date(temp.createdAt), 'round')
                             }</li>
                         </ul>
-                        <div key = {i} className={classes.textQuestion} >    
+                        <div key = {nanoid(9)} className={classes.textQuestion} >    
     
                         {handleDta1(temp.content)}
                         </div>
-                        <a key={i} className={classes.replayButton}>Trả lời</a>
+                        <a key={nanoid(8)} className={classes.replayButton}>Trả lời</a>
                     </div>
                 )
             })
@@ -234,8 +230,7 @@ const Submenu = ({classes,isResult,isActive})=>{
         offset = 0;
         setDataFetch1(result[1])
         setDataMap(result[0]);
-        console.log("set click class") 
-        console.log(dataMap)  
+
 
         setCurrentClass(`${key}`)
         setChooseClasss(1)
@@ -246,15 +241,8 @@ const Submenu = ({classes,isResult,isActive})=>{
  
     useEffect(() => {
         async function test(){
-            console.log(offset);
-            console.log(limit)
-            console.log("dataaaaa" ,dataFetch1)
-            console.log(dataMap)
-            // setDataMap([...dataMap, ...dataFetch1]);
-            setDataMapnel(dataFetch1,"see more")
 
-            
-
+            setDataMap([...dataMap, ...dataFetch1]);
             const result = await handleClickChangeClass(currentClass,offset,limit)
             setDataFetch1(result)
             

@@ -10,6 +10,7 @@ import {UploadAvatar} from "../util/test"
 import { isLoading } from './../app/loadingSile';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 const AskQuestion = ({classes})=> {
     const [currentClass,setCurrentClass] = useState('Chọn lớp')
     const [currentSub,setCurrentSub] = useState('Chọn môn')
@@ -78,7 +79,7 @@ const AskQuestion = ({classes})=> {
     function handleRenderClass(){
         const data = listClass.map((item,index)=>{
             return(
-                <li key={index} data-key={index} onClick={(e)=>handleOutClass(e,item.text)} className={classes.itemFilter} key={index}>{item.text}</li>
+                <li key={nanoid(10)} data-key={index} onClick={(e)=>handleOutClass(e,item.text)} className={classes.itemFilter} key={nanoid(7)}>{item.text}</li>
             )
         })
         return data
@@ -86,7 +87,7 @@ const AskQuestion = ({classes})=> {
     function handleRenderSubject(){
         const data = listSubject.map((item,index)=>{
             return(
-                <li key={index} data-key={index} onClick={(e)=>handleOutSub(e,item.text)}  className={classes.itemFilter} key={index}>{item.text}</li>
+                <li key={nanoid(10)} data-key={index} onClick={(e)=>handleOutSub(e,item.text)}  className={classes.itemFilter} key={nanoid(5)}>{item.text}</li>
             )
         })
         return data
