@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {withStyles} from '@material-ui/core';
+import { withStyles} from '@material-ui/core';
 import styles from "./style"
 import listClass from '../../util/Contants/listClass'
 import arrow1 from "../../assets/images/icon-arrow1.png"
@@ -13,6 +13,10 @@ import vi from 'javascript-time-ago/locale/vi';
 import productApi from '../../api/productApi'
 import contentSlideBar from '../../util/Contants/contentSlideBar'
 import { nanoid } from 'nanoid'
+import { useRouter } from 'next/router'
+
+import Link from 'next/link'
+
 
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
@@ -24,8 +28,9 @@ let offset1 = 0;
 let onAdd = false;
 let contracter = false;
 let dataFetch=[];
+
 const Submenu = ({classes,isResult,isActive})=>{
-    
+    const router = useRouter()
     const [openNav,setOpenNav] = useState({
         openStatus:false,
         openClass:false,
@@ -89,7 +94,7 @@ const Submenu = ({classes,isResult,isActive})=>{
         return data
         
     }
-    const handleDta1 = (text)=>{
+    const handleDta1 = (text,id)=>{
         let textChange = text.split("↵")
 
         const data =  textChange.map((temp,i)=>{
@@ -97,7 +102,15 @@ const Submenu = ({classes,isResult,isActive})=>{
                 <>{temp}<br/></>
             )
         })
-        return data
+        return (
+            <div onClick={(e)=>{
+                e.preventDefault()
+                router.push(`/cauhoi/${id}`)}}>
+               
+                {data}
+            
+            </div>
+        )
         
     }
     async function handleClickChangeClass(key,off,lim){
@@ -143,7 +156,7 @@ const Submenu = ({classes,isResult,isActive})=>{
                         </ul>
                         <div key = {nanoid(9)} className={classes.textQuestion} >    
     
-                        {handleDta1(temp.content)}
+                        {handleDta1(temp.content,temp._id)}
                         </div>
                         <a key={nanoid(8)} className={classes.replayButton}>Trả lời</a>
                     </div>

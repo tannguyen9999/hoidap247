@@ -13,6 +13,19 @@ const productApi = {
     const url = `/auth/login`;
     return POST({ url, data });
   },
+  
+  getPostById: (id) => {
+    const url = `/post/${id}`;
+    return GET({ url });
+  },
+  getCommentByPostId: (id) => {
+    const url = `/comment/${id}`;
+    return GET({ url });
+  },
+  postComment: (data) => {
+    const url = `/comment/`;
+    return POST({ url,data });
+  },
   getListPost: (data) => {
     const url = `/post/`;
     return GET({ url,data });
