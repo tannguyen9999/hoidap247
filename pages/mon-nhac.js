@@ -20,7 +20,7 @@ const Home = ({isLogin ,name,startDay,avatar,result, }) => {
 Home.getInitialProps = async (ctx) => {
   const allCookies = cookies(ctx);
   let isLogin = false; 
-  const name = allCookies.name; 
+  const name = allCookies.name
   const startDay =  allCookies.startDay
   const avatar = allCookies.avatar
   if(allCookies.token && name && startDay){
