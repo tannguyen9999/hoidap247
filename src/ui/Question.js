@@ -57,7 +57,7 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
                         <li className={classes.itemHeaderQuestion}>{result.subject}</li>
                         <li className={classes.itemHeaderQuestion}>{`Lớp ${result.class}`}</li>
                         <li className={classes.itemHeaderQuestion}>{
-                            timeAgo.format(new Date(result.startDay), 'round')
+                            timeAgo.format(new Date(result.createdAt), 'round')
                         }</li>
                     </ul>
                 <div className = {classes.mainContenr} style={{wordWrap:'break-word'}}>

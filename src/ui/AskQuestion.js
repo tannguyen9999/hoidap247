@@ -11,12 +11,15 @@ import { isLoading } from './../app/loadingSile';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
+import productApi from '../api/productApi'
+import { useRouter } from 'next/router'
 const AskQuestion = ({classes})=> {
     const [currentClass,setCurrentClass] = useState('Chọn lớp')
     const [currentSub,setCurrentSub] = useState('Chọn môn')
     const inputEl = useRef(null);
     const inputEl2 = useRef(null);
     const dispatch = useDispatch();
+    const router = useRouter()
 
     const [open,setNav]= useState({
         class:false,
@@ -78,17 +81,21 @@ const AskQuestion = ({classes})=> {
     }
     function handleRenderClass(){
         const data = listClass.map((item,index)=>{
-            return(
-                <li key={nanoid(10)} data-key={index} onClick={(e)=>handleOutClass(e,item.text)} className={classes.itemFilter} key={nanoid(7)}>{item.text}</li>
-            )
+            if(index!== 0){
+                return(
+                    <li key={nanoid(10)} data-key={index} onClick={(e)=>handleOutClass(e,index)} className={classes.itemFilter} key={nanoid(7)}>{item.text}</li>
+                )
+            }
         })
         return data
     }
     function handleRenderSubject(){
         const data = listSubject.map((item,index)=>{
-            return(
-                <li key={nanoid(10)} data-key={index} onClick={(e)=>handleOutSub(e,item.text)}  className={classes.itemFilter} key={nanoid(5)}>{item.text}</li>
-            )
+            if(index !==0){
+                return(
+                    <li key={nanoid(10)} data-key={index} onClick={(e)=>handleOutSub(e,item.text)}  className={classes.itemFilter} key={nanoid(5)}>{item.text}</li>
+                )
+            }
         })
         return data
     }
@@ -116,15 +123,6 @@ const AskQuestion = ({classes})=> {
     }
      function  handleFileInput(e){
         const file = e.target.files[0];
-        // if(file.type == "image/jpeg" || file.type == "image/png"){
-        //     const reader = new FileReader();
-        //     reader.onload = function(){
-        //         const result = reader.result;
-        //         console.log(result)
-        //        alert('aaa')
-                
-        //     }
-        //     reader.readAsDataURL(file)
         if(file && (file.type == "image/jpeg" || file.type == "image/png")){
             const fileReader = new FileReader();
     
@@ -152,18 +150,45 @@ const AskQuestion = ({classes})=> {
     }
 
     async function handleSendConten(){
+        if(currentClass == 'Chọn lớp'){
+            alert("Bạn quên chọn lớp rồi kìa")
+            return
+        }
+        if(currentSub == 'Chọn môn'){
+            alert("Bạn quên chọn môn rồi kìa")
+            return
+        }
         const file = inputEl.current.files[0];
         const file2 = inputEl2.current.value;
         const value2 = file2.replaceAll('\n','↵')
+        if(!value2){
+            alert("Bạn chưa có nội dung câu hỏi")
+        }
+        let url=""
         
+       try {
         if(file){
             const form = new FormData();
-                    form.append('avatar', file);
-              const data = await UploadAvatar(form);
-           
-              return
-
+                    form.append('picture', file);
+              const data = await productApi.uploadpicture(form)
+            url = data.url
         }
+        let datasend = {
+            class:currentClass.toString(),
+            subject:currentSub,
+            picture:url,
+            content:value2
+        }
+        
+        const res = await productApi.uploadpost(datasend)
+        console.log(res)
+        const id = res.post._id;
+        router.push(`/cauhoi/${id}`)
+
+       } catch (error) {
+           
+       }
+        
         return
         
        

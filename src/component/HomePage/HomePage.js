@@ -103,7 +103,7 @@ const Submenu = ({classes,isResult,isActive})=>{
             )
         })
         return (
-            <div onClick={(e)=>{
+            <div key={nanoid(10)} onClick={(e)=>{
                 e.preventDefault()
                 router.push(`/cauhoi/${id}`)}}>
                

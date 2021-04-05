@@ -1,4 +1,4 @@
-import { GET, POST, PUT, DELETE } from './api';
+import { GET, POST, PUT, DELETE,POSTUPLOAD } from './api';
 
 const productApi = {
   getUserById: (id, data) => {
@@ -11,6 +11,14 @@ const productApi = {
   },
   logIn: data => {
     const url = `/auth/login`;
+    return POST({ url, data });
+  },
+  uploadpicture: data => {
+    const url = `/auth/upload`;
+    return POSTUPLOAD({ url, data });
+  },
+  uploadpost: data => {
+    const url = `/post/`;
     return POST({ url, data });
   },
   
