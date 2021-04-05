@@ -427,6 +427,7 @@ const styles = () =>{
 
 
       navSidebar3child:{
+        cursor:'pointer',
         padding:'12px 12px 12px 60px',
         display:'block',
         textAlign: 'right',

@@ -8,7 +8,14 @@ export const setCookie = (key, value) => {
       });
     }
   };
-
+  
+  export const removeCookie = (key) => {
+    if (process.browser) {
+      cookie.remove(key, {
+        expires: 1,
+      });
+    }
+  };
 export const getCookieFromBrowser = (key) => {
     return cookie.get(key);
   };

@@ -14,7 +14,7 @@ import iconMenu from "../assets/images/icon-menu2.png"
 import systemAvatar from "../assets/images/system_avatar.png"
 import backHeader from "../assets/images/back_header.png"
 import iconSearchMini from "../assets/images/icon_search.png"
-import {getCookieFromBrowser} from "../util/cookies"
+import {removeCookie} from "../util/cookies"
 import productApi from '../api/productApi'
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router'
@@ -113,6 +113,13 @@ const ButtonAppBar = ({ classes,isLog,isAudth,isName,isStartDay })=> {
     }
     return
   }
+
+function handleExit(){
+  removeCookie("token");
+  removeCookie("startDay");
+  removeCookie("name");
+  removeCookie("avatar");
+}
 function handleRepo2(){
   setStyleRepo({})
 }
@@ -141,7 +148,7 @@ function handleLoading(){
             <img src={iconSearchMini} alt="icon search" className={classes.iconSearchMini}></img>
             <button className={classes.searchButton}>Tìm</button>
         </div>
-        <div className={classes.navSmall} style={isLog ? {display:'none'}:{display:'auto'} }>
+        <div className={classes.navSmall} style={isLog || isAudth ? {display:'none'}:{} }>
           <img src={iconMenu} alt="menu icon" className={classes.navIconMenu} onClick={hanldeOpenNav}></img>
           <div className={classes.navSidebar} style={openNav}>
             <div className={classes.navSidebar1}>
@@ -156,20 +163,30 @@ function handleLoading(){
             </div>
             <div className={classes.navSidebar2}>
             <h4 className = {classes.textHeader2}>Hãy đăng nhập hoặc tạo tài khoản miễn phí!</h4>
+            <Link href="/login" passHref>
             <button className={classes.buttonSignin}>Đăng nhập</button>
+            </Link>
+            <Link href="/signup" passHref>
             <button className={classes.buttonSignup}>Đăng ky</button>
+
+            </Link>
             </div>
           </div>
         </div>
-        <ul className ={classes.navAuth} style={isLog ? {display:'none'}:{display:'auto'} }>
+        <ul className ={classes.navAuth} style={isLog || isAudth ?  {display:'none'}:{} }>
             <li className= {classes.navLogo}>
               <img src={iconUser} alt="logo icon user"></img>
             </li>
+            <Link href="/login" passHref>
             <li className={classes.navSignin}><a href="" className ={classes.navAuthText}>Đăng nhập </a></li>
+            </Link>
+            <Link href="/signup" passHref>
             <li className={classes.navSignup}><a href="" className ={classes.navAuthText}>Đăng ky</a></li>
+
+            </Link>
         </ul>
         
-        <ul className ={classes.navAuth2} style={isLog ? {display:'auto'}:{display:'none'} }>
+        <ul className ={classes.navAuth2} style={isLog ? {}:{display:'none'} }>
             <li className= {classes.navMess}>
             <i className="far fa-comment-dots"></i>
             </li>
@@ -235,12 +252,15 @@ function handleLoading(){
               <li  className={classes.navSidebar3child}>
                 <div className={classes.navSidebarContent}><span className={classes.triangle} ></span><span className={classes.navSidebar3Text}>Điểm danh nhận quà</span></div>
               </li>
-              <li  className={classes.navSidebar3child}>
+              <Link href="/" passHref>
+                 <li  className={classes.navSidebar3child} onClick={handleExit}>
                 <div className={classes.navSidebarContent}>
                 <span className={classes.triangle} ></span><span className={classes.navSidebar3Text}>Đăng xuất</span>
                 </div>
                 
               </li>
+              </Link>
+              
             </div>
             </ul>
            </div>

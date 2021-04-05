@@ -21,7 +21,8 @@ let offset = 0;
 let limit = 10;
 let offset1 = 0;
 let onAdd = false;
-
+let contracter = false;
+let dataFetch=[];
 const Submenu = ({classes,isResult,isActive})=>{
     
     const [openNav,setOpenNav] = useState({
@@ -37,13 +38,49 @@ const Submenu = ({classes,isResult,isActive})=>{
     })
     const [classs,setChooseClasss] = useState(0)
     const [classs2,setChooseClasss2] = useState(0)
-
-
-
     const [dataMap,setDataMap] = useState([])
+    const [dataFetch1,setDataFetch1] = useState([])
+    const [contract,setContract] = useState(true)
 
+   function setDataMapnel(a,b){
+    setDataMap([...dataMap, ...a]);
+    console.log(b)
+   }
 
-    
+    useEffect(() => {
+        // action on update of movies
+        
+    async function runConTract(){
+        if(contract){
+            try {
+                console.log("run contract")
+                console.log(offset)
+                console.log('limit',limit)
+                offset = 10;
+                
+                const result = await Promise.all(
+                    [
+                        handleClickChangeClass(currentClass,0,10),
+                        handleClickChangeClass(currentClass,10,10)
+                    ])
+                if(result[0] !== undefined){
+                    setDataMap(result[0])
+                }
+                setDataFetch1(result[1]) 
+            } catch (error) {
+                
+            }
+            setContract(false)
+       }
+    }
+    runConTract()
+
+        
+        
+     
+        
+        
+    },);
 
     const handleListClass = ()=>{
         const data =  listClass.map((item,index)=>{
@@ -92,8 +129,11 @@ const Submenu = ({classes,isResult,isActive})=>{
        if(classs == 0 && classs2 == 0){
            data = isResult
        }else{
+           console.log("render Data")
+           console.log(dataMap)
            data = dataMap;
        }
+       
              data =  data.map((temp,i)=>{
                 return(
                     <div key={temp._id} className={classes.itemQuestion}>
@@ -190,9 +230,12 @@ const Submenu = ({classes,isResult,isActive})=>{
             openClass:false,
             open:false
         })
-        const result = await handleClickChangeClass(key,0,limit);
+        const result = await Promise.all([handleClickChangeClass(key,0,limit),handleClickChangeClass(key,10,limit)])
         offset = 0;
-        setDataMap(result);   
+        setDataFetch1(result[1])
+        setDataMap(result[0]);
+        console.log("set click class") 
+        console.log(dataMap)  
 
         setCurrentClass(`${key}`)
         setChooseClasss(1)
@@ -200,28 +243,42 @@ const Submenu = ({classes,isResult,isActive})=>{
         return;
 
     }
+ 
     useEffect(() => {
-        // action on update of movies
+        async function test(){
+            console.log(offset);
+            console.log(limit)
+            console.log("dataaaaa" ,dataFetch1)
+            console.log(dataMap)
+            // setDataMap([...dataMap, ...dataFetch1]);
+            setDataMapnel(dataFetch1,"see more")
+
+            
+
+            const result = await handleClickChangeClass(currentClass,offset,limit)
+            setDataFetch1(result)
+            
+             
+         }
+
+         test()
+
+      },[classs2]);
         
-    async function test(){
-        
-           const result = await handleClickChangeClass(currentClass,offset,limit)
-            setDataMap([...dataMap, ...result]);
-        }
-            test()
+   
+            
         
         
      
         
         
-    }, [classs2]);
+   
     
     async function handleSeeMore(){
         // offset = offset +10;
         // const result = await handleClickChangeClass(currentClass,offset,limit)
         offset = offset +10;
         setChooseClasss2(classs2+1)
-        // setDataMap([...dataMap, ...result]);
         return
     }
     return(

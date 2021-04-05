@@ -63,7 +63,7 @@ export default function SignIn() {
       setCookie("avatar",avatar)
 
       
-      window.location.href = "/"
+      router.push("/");
 
       
       return
