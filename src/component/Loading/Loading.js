@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 
 import {withStyles} from '@material-ui/core';
 import styles from "./styles"
-import gif from "../../assets/images/giphy.gif"
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Loading = ({classes})=>{
     const loading = useSelector(state => state.loading);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
 import {withStyles} from '@material-ui/core';
 import styles from "../styles/main"
@@ -13,7 +13,6 @@ import { isLoading } from './../app/loadingSile';
 import Submenu from '../component/SubMenu/Submenu'
 import HomePage from '../component/HomePage/HomePage'
 import Event from '../component/Event/Event'
-import { nanoid } from 'nanoid';
 
 
 
@@ -21,14 +20,18 @@ import { nanoid } from 'nanoid';
 
 const MainBoard = ({ classes,isActive,isName,isStartDay,isLogin,isAvatar,isResult,isSearch })=> {
     const dispatch = useDispatch();
-        setTimeout(function(){
-            const changeIsLoading2 = {
-                isLoading: false
-              };
-            const action2 = isLoading(changeIsLoading2);
-            dispatch(action2);
-         }, 100);
 
+    useEffect(() => {
+      const changeIsLoading2 = {
+        isLoading: false
+      };
+    const action2 = isLoading(changeIsLoading2);
+    dispatch(action2);
+    });
+  
+       
+            
+        
         
 
 

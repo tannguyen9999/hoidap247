@@ -9,6 +9,16 @@ const styles = () =>{
             ['@media (max-width:1022px)']: {
                width:'100%',
                
+               
+            },
+        
+        },
+        subMenu1:{
+            width:'166px',
+            ['@media (max-width:1022px)']: {
+               width:'100%',
+               display:'none'
+               
             },
         
         },

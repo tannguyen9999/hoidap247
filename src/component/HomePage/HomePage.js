@@ -3,9 +3,7 @@ import { withStyles} from '@material-ui/core';
 import styles from "./style"
 import listClass from '../../util/Contants/listClass'
 import arrow1 from "../../assets/images/icon-arrow1.png"
-import avatar from "../../assets/images/icon_user.png"
 import iconDown from "../../assets/images/icon-dow2.png"
-import anh1 from "../../assets/images/anh1.jpg"
 import anhvip2 from "../../assets/images/anhvip2.jpeg"
 
 import TimeAgo from 'javascript-time-ago';
@@ -15,19 +13,14 @@ import contentSlideBar from '../../util/Contants/contentSlideBar'
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
 
-import Link from 'next/link'
 
 
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
-let text = "tìm tập hợp A các số nguyêndassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss a aaaaaaaaaasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp tìm tập hợp A các số nguyên a sao ↵ cho : 1/2 + 1/34 bé hơn ↵ hoặc bằ  1/2 + 1/34 bé hơn ↵ hoặc b + 1/34 bé hơn ↵ hoặc bằ+ 1/34 bé hơn ↵ hoặc bằng a/17 < 15/17 - 3/17 ↵ các bạn giúp mik nhé !mik đang cần gấp"
-let test = text.split("↵")
+
 let offset = 0;
 let limit = 10;
-let offset1 = 0;
-let onAdd = false;
-let contracter = false;
-let dataFetch=[];
+
 
 const Submenu = ({classes,isResult,isActive,isSearch})=>{
     const router = useRouter()
@@ -48,10 +41,7 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
     const [dataFetch1,setDataFetch1] = useState([])
     const [contract,setContract] = useState(true)
 
-   function setDataMapnel(a,b){
-    setDataMap([...dataMap, ...a]);
-    console.log(b)
-   }
+
 
     useEffect(() => {
         // action on update of movies

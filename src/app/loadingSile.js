@@ -18,5 +18,5 @@ const loading = createSlice({
 });
 
 const { reducer, actions } = loading;
-export const { isLoading, getLoading } = actions;
+export const { isLoading } = actions;
 export default reducer;

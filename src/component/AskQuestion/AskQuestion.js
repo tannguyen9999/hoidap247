@@ -13,13 +13,13 @@ const AskQuestion = ({classes})=>{
   const dispatch = useDispatch();
   
     function handleToQuestion(){
-        setTimeout(function(){
+        
             const changeIsLoading = {
                 isLoading: true
               };
             const action = isLoading(changeIsLoading);
             dispatch(action);
-         }, 100);
+       
         
     }
     return(<div className={classes.overLayout}>

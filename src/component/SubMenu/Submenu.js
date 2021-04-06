@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {withStyles} from '@material-ui/core';
 import styles from "./style"
 import contentSlideBar from '../../util/Contants/contentSlideBar'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { isLoading } from './../../app/loadingSile';
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -13,7 +13,19 @@ import { nanoid } from 'nanoid'
 const Submenu = ({classes,isActive,isSearch})=>{
     const dispatch = useDispatch();
     const router = useRouter()
+   
+    function handleChangeCategory(e){
+   
 
+        const changeIsLoading = {
+            isLoading: true
+          };
+        const action = isLoading(changeIsLoading);
+        dispatch(action);
+
+return
+
+}
     const handleContenSileBar = ()=>{
         const data = contentSlideBar.map((item,index)=>{
             return(
@@ -30,30 +42,19 @@ const Submenu = ({classes,isActive,isSearch})=>{
         )
         return data       
     }
-    function handleChangeCategory(e){
-        //     const key = e.target.closest("li");
-        //     const keyprops = key.dataset.keyprops;
-        //     const pust = contentSlideBar[keyprops];
-
-                    const changeIsLoading = {
-                        isLoading: true
-                      };
-                    const action = isLoading(changeIsLoading);
-                    dispatch(action);
-          
-            return
-       
-    }
+   
     
-
+ 
     return(
-        (
-            <div style={isSearch?{visibility:'hidden'}:{}} className={classes.subMenu}>
+        (<div  className={isSearch? classes.subMenu1 : classes.subMenu}>
+                <div style={isSearch ?{visibility:'hidden'} :{}  }className={classes.subMenu}>
             <ul className={classes.subMenu2} >
                 {handleContenSileBar()}
             </ul>
         </div>
-        )
+        </div>
+        
+        ) 
     )
 
 }

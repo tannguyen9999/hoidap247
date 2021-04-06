@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 
 import {withStyles} from '@material-ui/core';
 import styles from "../styles/header"
@@ -14,12 +13,12 @@ import systemAvatar from "../assets/images/system_avatar.png"
 import backHeader from "../assets/images/back_header.png"
 import iconSearchMini from "../assets/images/icon_search.png"
 import {removeCookie} from "../util/cookies"
-import productApi from '../api/productApi'
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router'
 import { isLoading } from './../app/loadingSile';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Link from 'next/link'
+// import Loading from '../../src/component/Loading/Loading'
 
 
 
@@ -46,11 +45,7 @@ const ButtonAppBar = ({ classes,isLog,isAudth,isName,isStartDay })=> {
   const [valueInputSearch, setValueInputSearch] = useState('');
 
   async function hanldeOpenNav(){
-    try {
-      await productApi.getUserById('122dasd');
-    } catch (error) {
-      
-    }
+   
     if(openNav.right !== '-700px'){
       setOpenNav({
       right:'-700px',
@@ -127,13 +122,13 @@ function handleRepo2(){
 }
 function handleLoading(){
   
-  setTimeout(function(){
+  
     const changeIsLoading = {
         isLoading: true
       };
     const action = isLoading(changeIsLoading);
     dispatch(action);
- }, 100);
+
   return;
 }
 function handleSearch(){
@@ -170,7 +165,7 @@ function handleChangeInputSearch(e){
                   return
                 }
               }} onChange={(e)=>{handleChangeInputSearch(e)}} onFocus={handleRepo} onBlur={handleRepo2} placeholder={valuePlaceSearch} type="text"  className={classes.searchInput}/>
-            <img src={iconSearchMini} alt="icon search" className={classes.iconSearchMini}></img>
+            <img src={iconSearchMini} alt="icon search" onClick={handleSearch} className={classes.iconSearchMini}></img>
             <button onClick={handleSearch} className={classes.searchButton}>Tìm</button>
         </div>
         <div className={classes.navSmall} style={isLog || isAudth ? {display:'none'}:{} }>
@@ -292,7 +287,7 @@ function handleChangeInputSearch(e){
         </ul>
         
         </div>
-        
+        {/* <Loading></Loading> */}
     </div>
   );
 } 

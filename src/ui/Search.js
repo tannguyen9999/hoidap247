@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import {withStyles} from '@material-ui/core';
 import styles from "../styles/main"
@@ -21,14 +21,15 @@ import { nanoid } from 'nanoid';
 
 const Search = ({ classes,isActive,isName,isStartDay,isLogin,isAvatar,isResult })=> {
     const dispatch = useDispatch();
-        setTimeout(function(){
-            const changeIsLoading2 = {
-                isLoading: false
-              };
-            const action2 = isLoading(changeIsLoading2);
-            dispatch(action2);
-         }, 100);
-
+    useEffect(() => {
+      const changeIsLoading2 = {
+        isLoading: false
+      };
+    const action2 = isLoading(changeIsLoading2);
+    dispatch(action2);
+    });
+  
+       
         
 
 

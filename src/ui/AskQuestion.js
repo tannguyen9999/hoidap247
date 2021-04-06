@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core';
 import styles from "../styles/askquestion"
 import listClass from "../util/Contants/listClass";
 import listSubject from "../util/Contants/contentSlideBar"
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef,useEffect } from 'react';
 import image from "../assets/images/icon-recipe3.png";
 import imagetem from "../assets/images/anh1.jpg"
 import {UploadAvatar} from "../util/test"
@@ -29,13 +29,16 @@ const AskQuestion = ({classes})=> {
     const [imageInput,setImageInput] = useState({
         src:'',
     })
-    setTimeout(function(){
+    useEffect(() => {
+        
         const changeIsLoading2 = {
             isLoading: false
           };
         const action2 = isLoading(changeIsLoading2);
         dispatch(action2);
-     }, 100);
+      });
+    
+
     function handleInputImage(){
         if(imageInput.src !== ''){
             return(

@@ -51,16 +51,14 @@ const Profile = ({classes,name,isAvatar,startDay,isSex})=>{
     const dispatch = useDispatch();
     
     useEffect(() => {
-        // alert(time)
-      });
-
-    setTimeout(function(){
         const changeIsLoading2 = {
             isLoading: false
           };
         const action2 = isLoading(changeIsLoading2);
         dispatch(action2);
-     }, 100);
+      });
+
+    
 
     function handleChangePass(){
         setChangePass(!changePass)

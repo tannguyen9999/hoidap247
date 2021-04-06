@@ -17,11 +17,12 @@ const styles = () =>{
             justifyContent: 'center'
         },
         loader:{
-            border: '16px solid #f3f3f3',
+            border: '4px solid #f3f3f3',
             borderRadius: '50%',
-            borderTop: '16px solid #3498db',
-            width: '100px',
-            height: '100px',
+            borderTop: '4px solid #E7B717',
+
+            width: '50px',
+            height: '50px',
             marginLeft:'24px',
             '-webkit-animation': 'spin 0.5s linear infinite', /* Safari */
             animation: 'spin 0.5s linear infinite',

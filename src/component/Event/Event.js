@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {withStyles} from '@material-ui/core';
 import styles from "./style"
 import anh1 from "../../assets/images/anhvip2.jpeg"
@@ -10,7 +10,7 @@ import vi from 'javascript-time-ago/locale/vi';
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
 
-import { isLoading } from '../../app/loadingSile';
+
 
 const Submenu = ({classes,isStartDay,isName,isLogin,isAvatar})=>{
     let time = ()=>{
