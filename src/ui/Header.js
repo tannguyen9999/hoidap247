@@ -8,7 +8,6 @@ import {
   isBrowser,
   isTablet,
 } from "react-device-detect";
-import logo from "../assets/images/logo_h247.png"
 import iconUser from "../assets/images/icon_user.png"
 import iconMenu from "../assets/images/icon-menu2.png"
 import systemAvatar from "../assets/images/system_avatar.png"
@@ -43,6 +42,9 @@ const ButtonAppBar = ({ classes,isLog,isAudth,isName,isStartDay })=> {
       
     } 
   ) 
+
+  const [valueInputSearch, setValueInputSearch] = useState('');
+
   async function hanldeOpenNav(){
     try {
       await productApi.getUserById('122dasd');
@@ -134,6 +136,19 @@ function handleLoading(){
  }, 100);
   return;
 }
+function handleSearch(){
+  if(valueInputSearch !== ''){
+    const content = valueInputSearch.replaceAll('\n','↵');
+    router.push(`/search/${content}`)
+    return
+  }
+  return
+}
+function handleChangeInputSearch(e){
+  const value = e.target.value;
+  setValueInputSearch(value)
+  return
+}
   return (
     <div  className ={classes.header}>
         <div className={classes.center}>
@@ -144,9 +159,19 @@ function handleLoading(){
 
         {/* <img src={logo} alt="Logo" className={classes.logo}></img> */}
         <div className={classes.sectionSearch} style={isAudth ? {display:'none'} :{}}>
-            <input onFocus={handleRepo} onBlur={handleRepo2} placeholder={valuePlaceSearch} type="text"  className={classes.searchInput}/>
+            <input valueInputSearch={valueInputSearch} onKeyPress={event => {
+                if (event.key === 'Enter') {
+                  if(valueInputSearch !== ''){
+                  const content = valueInputSearch.replaceAll('\n','↵');
+
+                    router.push(`/search/${content}`)
+                    return
+                  }
+                  return
+                }
+              }} onChange={(e)=>{handleChangeInputSearch(e)}} onFocus={handleRepo} onBlur={handleRepo2} placeholder={valuePlaceSearch} type="text"  className={classes.searchInput}/>
             <img src={iconSearchMini} alt="icon search" className={classes.iconSearchMini}></img>
-            <button className={classes.searchButton}>Tìm</button>
+            <button onClick={handleSearch} className={classes.searchButton}>Tìm</button>
         </div>
         <div className={classes.navSmall} style={isLog || isAudth ? {display:'none'}:{} }>
           <img src={iconMenu} alt="menu icon" className={classes.navIconMenu} onClick={hanldeOpenNav}></img>

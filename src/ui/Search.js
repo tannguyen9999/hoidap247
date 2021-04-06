@@ -19,7 +19,7 @@ import { nanoid } from 'nanoid';
 
 
 
-const MainBoard = ({ classes,isActive,isName,isStartDay,isLogin,isAvatar,isResult,isSearch })=> {
+const Search = ({ classes,isActive,isName,isStartDay,isLogin,isAvatar,isResult })=> {
     const dispatch = useDispatch();
         setTimeout(function(){
             const changeIsLoading2 = {
@@ -35,16 +35,15 @@ const MainBoard = ({ classes,isActive,isName,isStartDay,isLogin,isAvatar,isResul
 
 
     return(<div  className = {classes.overMain}>
-        <Submenu isSearch={isSearch} isActive = {isActive}></Submenu>
-        <HomePage isSearch={isSearch} isActive ={isActive} isResult={isResult}></HomePage>
+        
+        <HomePage  isActive ={isActive} isResult={isResult}></HomePage>
         <Event  isName={isName} isStartDay={isStartDay} isLogin={isLogin} isAvatar={isAvatar}></Event>
 
-        <AskQuestion></AskQuestion>
        
     </div>)
 }
 
-MainBoard.propTypes = {
+Search.propTypes = {
     isActive: PropTypes.number,
     isName:PropTypes.string,
     isStartDay:PropTypes.string,
@@ -53,4 +52,4 @@ MainBoard.propTypes = {
     isResult: PropTypes.array
   };
   
-export default withStyles(styles)(MainBoard)
+export default withStyles(styles)(Search)

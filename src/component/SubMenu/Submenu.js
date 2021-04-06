@@ -10,7 +10,7 @@ import { nanoid } from 'nanoid'
 
 
 
-const Submenu = ({classes,isActive})=>{
+const Submenu = ({classes,isActive,isSearch})=>{
     const dispatch = useDispatch();
     const router = useRouter()
 
@@ -48,7 +48,7 @@ const Submenu = ({classes,isActive})=>{
 
     return(
         (
-            <div className={classes.subMenu}>
+            <div style={isSearch?{visibility:'hidden'}:{}} className={classes.subMenu}>
             <ul className={classes.subMenu2} >
                 {handleContenSileBar()}
             </ul>

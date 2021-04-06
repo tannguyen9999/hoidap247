@@ -176,8 +176,11 @@ const AskQuestion = ({classes})=> {
         let datasend = {
             class:currentClass.toString(),
             subject:currentSub,
-            picture:url,
             content:value2
+        }
+
+        if(url !== ""){
+            datasend.picture = url
         }
         
         const res = await productApi.uploadpost(datasend)
@@ -186,7 +189,9 @@ const AskQuestion = ({classes})=> {
         router.push(`/cauhoi/${id}`)
 
        } catch (error) {
-           
+           console.log(error)
+        router.push(`/login`)
+
        }
         
         return

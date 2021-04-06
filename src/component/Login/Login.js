@@ -56,11 +56,15 @@ export default function SignIn() {
     try {
       const res = await productApi.logIn(data)
       const {token} = res;
-      const {startDay,name,avatar} = res.user
+      const {startDay,name,avatar,sex,birthDay} = res.user
       setCookie("token",token)
       setCookie("startDay",startDay)
       setCookie("name",name)
       setCookie("avatar",avatar)
+      setCookie("sex",sex)
+      setCookie("birthDay",birthDay)
+
+      
 
       
       router.push("/");

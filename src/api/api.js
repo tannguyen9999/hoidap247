@@ -40,3 +40,7 @@ export const DELETE = ({ url }) => {
 export const POSTUPLOAD = ({ url,data = {}  }) => {
   return axiosClient.post(url, data, getHeaderUpLoad());
 };
+
+export const PUTUPAVA = ({ url,data = {}  }) => {
+  return axiosClient.put(url, data, getHeaderUpLoad());
+};

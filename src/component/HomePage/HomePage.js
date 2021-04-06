@@ -29,7 +29,7 @@ let onAdd = false;
 let contracter = false;
 let dataFetch=[];
 
-const Submenu = ({classes,isResult,isActive})=>{
+const Submenu = ({classes,isResult,isActive,isSearch})=>{
     const router = useRouter()
     const [openNav,setOpenNav] = useState({
         openStatus:false,
@@ -88,7 +88,9 @@ const Submenu = ({classes,isResult,isActive})=>{
     const handleListClass = ()=>{
         const data =  listClass.map((item,index)=>{
             return(
-                <li key={nanoid(10)} data-key={index} onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>{item.text}</li>
+                <li key={nanoid(10)} data-key={index} onClick={(e)=>handleClickClass(e)} className={classes.itemSeclectClass}>
+                    {item.text}
+                    </li>
             ) 
         })
         return data
@@ -99,7 +101,7 @@ const Submenu = ({classes,isResult,isActive})=>{
 
         const data =  textChange.map((temp,i)=>{
             return(
-                <>{temp}<br/></>
+                <div>{temp}<br/></div>
             )
         })
         return (
@@ -285,8 +287,8 @@ const Submenu = ({classes,isResult,isActive})=>{
     return(
         (
             <div className={classes.homePage}>
-            <div className={classes.bannerResponse}>10000000 câu hỏi đã được trả lời !</div>
-            <ul className={classes.customFilter}>
+            <div style={isSearch?{display:'none'}:{}} className={classes.bannerResponse}>10000000 câu hỏi đã được trả lời !</div>
+            <ul style={isSearch?{display:'none'}:{}} className={classes.customFilter}>
                 <li onClick={handleOpenClass} className={classes.filterClass}><span>{`${currentClass == '0'? 'Tất cả': 'Lớp ' + currentClass}`}</span> <img className={classes.filterDown} src={iconDown} alt='icon down'></img>
                 </li>
                 <div style={openNav.open ? {right:'0'}:{}} onClick={handleCloseNav} className={classes.overNav}></div>
@@ -301,11 +303,11 @@ const Submenu = ({classes,isResult,isActive})=>{
                         <li data-key='3' onClick={(e)=>handleClickStatus(e)} className={classes.filterStatusItem}>Lần đầu hỏi</li>
                     </ul>
             </ul>
-            <div className = {classes.listQuestion}>
+            <div style={isSearch?{marginTop:'0px'}:{}} className = {classes.listQuestion}>
                 {handleAllData()}
                 
             </div>
-            <div onClick={handleSeeMore} className={classes.seeMore}>Xem thêm<img className={classes.arrow1} src={arrow1} alt='arrow 1'></img></div>
+            <div style={isSearch?{display:'none'}:{}}  onClick={handleSeeMore} className={classes.seeMore}>Xem thêm<img className={classes.arrow1} src={arrow1} alt='arrow 1'></img></div>
         </div>
         )
     )

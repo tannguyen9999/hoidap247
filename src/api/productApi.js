@@ -1,4 +1,4 @@
-import { GET, POST, PUT, DELETE,POSTUPLOAD } from './api';
+import { GET, POST, PUT, DELETE,POSTUPLOAD,PUTUPAVA } from './api';
 
 const productApi = {
   getUserById: (id, data) => {
@@ -13,9 +13,21 @@ const productApi = {
     const url = `/auth/login`;
     return POST({ url, data });
   },
+  changPass: (data) => {
+    const url = `/auth/change-password`;
+    return PUT({ url,data });
+  },
   uploadpicture: data => {
     const url = `/auth/upload`;
     return POSTUPLOAD({ url, data });
+  },
+  uploadAvatar: data => {
+    const url = `/auth/updateAvatar`;
+    return PUTUPAVA({ url, data });
+  },
+  search: data => {
+    const url = `/post/search`;
+    return POST({ url, data });
   },
   uploadpost: data => {
     const url = `/post/`;
