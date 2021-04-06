@@ -159,7 +159,7 @@ function handleChangeInputSearch(e){
 
         {/* <img src={logo} alt="Logo" className={classes.logo}></img> */}
         <div className={classes.sectionSearch} style={isAudth ? {display:'none'} :{}}>
-            <input valueInputSearch={valueInputSearch} onKeyPress={event => {
+            <input value={valueInputSearch} onKeyPress={event => {
                 if (event.key === 'Enter') {
                   if(valueInputSearch !== ''){
                   const content = valueInputSearch.replaceAll('\n','↵');

@@ -101,7 +101,7 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
 
         const data =  textChange.map((temp,i)=>{
             return(
-                <div>{temp}<br/></div>
+                <div key={nanoid(10)}>{temp}<br/></div>
             )
         })
         return (
@@ -149,10 +149,10 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
                 return(
                     <div key={temp._id} className={classes.itemQuestion}>
                         <ul key ={nanoid(11)} className={classes.headerQuestion} >
-                            <li className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={temp.userId.avatar !== "" ? temp.userId.avatar:anhvip2} alt='avatarUser'></img></li>
-                            <li className={classes.itemHeaderQuestion}>{temp.subject}</li>
-                            <li className={classes.itemHeaderQuestion}>{`Lớp ${temp.class}`}</li>
-                            <li className={classes.itemHeaderQuestion}>{
+                            <li key={nanoid(7)} className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={temp.userId.avatar !== "" ? temp.userId.avatar:anhvip2} alt='avatarUser'></img></li>
+                            <li key={nanoid(7)} className={classes.itemHeaderQuestion}>{temp.subject}</li>
+                            <li key={nanoid(7)} className={classes.itemHeaderQuestion}>{`Lớp ${temp.class}`}</li>
+                            <li key={nanoid(7)} className={classes.itemHeaderQuestion}>{
                             timeAgo.format(new Date(temp.createdAt), 'round')
                             }</li>
                         </ul>

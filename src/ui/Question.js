@@ -11,6 +11,7 @@ import TimeAgo from 'javascript-time-ago';
 import vi from 'javascript-time-ago/locale/vi';
 import productApi from '../api/productApi'
 import { useRouter } from 'next/router'
+import { nanoid } from 'nanoid';
 
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
@@ -28,7 +29,7 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
         let test = text.split("↵")
         const res =  test.map((item)=>{
             return(
-                <>{item}<br/></>
+                <div key={nanoid(10)}>{item}<br/></div>
             )
         })
 
@@ -41,7 +42,7 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
         let test = text.split("↵")
         const res =  test.map((item)=>{
             return(
-                <>{item}<br/></>
+                <div key={nanoid(10)}>{item}<br/></div>
             )
         })
 
@@ -75,12 +76,12 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
     function handleRenderAnser(){
         const anserSection = result2.map((item)=>{
             return(
-                <div className={classes.dataAnser}>
-                    <div className={classes.headerAnser}>
-                        <img src={item.userCommentId.avatar !==''? item.userCommentId.avatar:anhvip} className = {classes.avatarCurrent}></img>
-                        <strong style={{paddingLeft:'12px'}}>{item.userCommentId.name}</strong>
+                <div key={nanoid(10)} className={classes.dataAnser}>
+                    <div key={nanoid(12)} className={classes.headerAnser}>
+                        <img key={nanoid(7)} src={item.userCommentId.avatar !==''? item.userCommentId.avatar:anhvip} className = {classes.avatarCurrent}></img>
+                        <strong key={nanoid(7)} style={{paddingLeft:'12px'}}>{item.userCommentId.name}</strong>
                     </div>
-                    <div style={{paddingLeft: '45px',width:'90%',wordWrap: 'break-word'}}>
+                    <div key={nanoid(7)} style={{paddingLeft: '45px',width:'90%',wordWrap: 'break-word'}}>
                         {handleRenderTextComment(item.contentComment)}
                         
     

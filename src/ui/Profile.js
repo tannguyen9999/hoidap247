@@ -68,15 +68,6 @@ const Profile = ({classes,name,isAvatar,startDay,isSex})=>{
     }
     function  handleFileInput(e){
         const file = e.target.files[0];
-        // if(file.type == "image/jpeg" || file.type == "image/png"){
-        //     const reader = new FileReader();
-        //     reader.onload = function(){
-        //         const result = reader.result;
-        //         console.log(result)
-        //        alert('aaa')
-                
-        //     }
-        //     reader.readAsDataURL(file)
         if(file && (file.type == "image/jpeg" || file.type == "image/png")){
             const fileReader = new FileReader();
             
@@ -113,14 +104,14 @@ const Profile = ({classes,name,isAvatar,startDay,isSex})=>{
     }
    async function handleUpdate(){
         const file = inputEl.current.files[0];
-        const sexCh = inputEl2.current.value;
-        const bithCh = inputEl3.current.value;
-        console.log(sexCh,bithCh)
-        console.log(newPassWord,oldPassWord,confirmPassWord)
+
         if(newPassWord !== confirmPassWord){
             alert("Mật khẩu không trùng khớp")
             return
         } 
+
+
+
         if(oldPassWord !==""){
             if(newPassWord == ""){
                 alert("Chưa hoàn thành nhập mật khẩu mới")
@@ -144,11 +135,11 @@ const Profile = ({classes,name,isAvatar,startDay,isSex})=>{
                 
                 const res = await Promise.all(reqq)
                 if(uploadAva){
-                    const avaa = res[1].user.avatar;
+                    const avaa = res[1].url;
                      setCookie("avatar",avaa);
                 }
 
-                alert("da cap nhat")
+                alert("đã cập nhật")
                 
                 router.push('/user/profile')
                 
@@ -164,6 +155,32 @@ const Profile = ({classes,name,isAvatar,startDay,isSex})=>{
                 }
                 return
                 
+            }
+        }
+        if(oldPassWord ==""){
+            
+            
+            if(uploadAva){
+                try {
+                    
+                const form1 = new FormData();
+                const file1 = inputEl.current.files[0];
+                
+                form1.append('avatar', file1);
+                console.log(file1);
+                const res = await productApi.uploadAvatar(form1);
+                const avatee = res.url;
+                
+                setCookie("avatar",avatee);
+                alert("đã cập nhật")
+                
+                router.push('/user/profile')
+                
+                
+                } catch (error) {
+                    
+                }
+
             }
         }
         return
