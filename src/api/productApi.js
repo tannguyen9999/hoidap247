@@ -5,6 +5,10 @@ const productApi = {
     const url = `/users/${id}`;
     return GET({ url });
   },
+  getSiteMap: () => {
+    const url = `/post/sitemap`;
+    return GET({ url });
+  },
   signUp: data => {
     const url = `/auth/register`;
     return POST({ url, data });
