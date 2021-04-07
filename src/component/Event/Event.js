@@ -19,7 +19,7 @@ const Submenu = ({classes,isStartDay,isName,isLogin,isAvatar})=>{
             return a;
         } catch (error) {
             return ''
-        }
+        } 
     }
     return(
         <div className={classes.event}>

@@ -67,7 +67,7 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
                     </div>
                 </div>
                 <div className={classes.contentImage}>
-                    <img src={result.picture} className={classes.contentImage2}></img>
+                    <img style={result.picture == ""?{display:'none'}:{}} src={result.picture} alt="conten Image" className={classes.contentImage2}></img>
                 </div>
             </div>
         )
@@ -78,7 +78,7 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
             return(
                 <div key={nanoid(10)} className={classes.dataAnser}>
                     <div key={nanoid(12)} className={classes.headerAnser}>
-                        <img key={nanoid(7)} src={item.userCommentId.avatar !==''? item.userCommentId.avatar:anhvip} className = {classes.avatarCurrent}></img>
+                        <img alt="avatar UserCm" key={nanoid(7)} src={item.userCommentId.avatar !==''? item.userCommentId.avatar:anhvip} className = {classes.avatarCurrent}></img>
                         <strong key={nanoid(7)} style={{paddingLeft:'12px'}}>{item.userCommentId.name}</strong>
                     </div>
                     <div key={nanoid(7)} style={{paddingLeft: '45px',width:'90%',wordWrap: 'break-word'}}>
@@ -114,12 +114,12 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
     return(
         <div className = {classes.overMain}>
             <div className={classes.rentPage}>
-                <img style={{display:'block'}} className={classes.image} src={anh1}></img>
-                <img className={classes.image} src={anh2}></img>
-                <img className={classes.image} src={anh3}></img>
-                <img className={classes.image} src={anh1}></img>
-                <img className={classes.image} src={anh2}></img>
-                <img className={classes.image} src={anh3}></img>
+                <img style={{display:'block'}} alt="rentPage" className={classes.image} src={anh1}></img>
+                <img className={classes.image} alt="rentPage" src={anh2}></img>
+                <img className={classes.image} alt="rentPage" src={anh3}></img>
+                <img className={classes.image} alt="rentPage" src={anh1}></img>
+                <img className={classes.image} alt="rentPage" src={anh2}></img>
+                <img className={classes.image} alt="rentPage" src={anh3}></img>
                 
             </div>
             
@@ -129,7 +129,7 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
                 </div>
                 <div style = {!isLogin ? {display:'none'}:{}} className={classes.section2}>
                     <div className={classes.writeComment}>
-                        <img src={avatar == ''?anhvip:avatar} className={classes.avatarCurrent}></img>
+                        <img src={avatar == ''?anhvip:avatar} alt="avatar" className={classes.avatarCurrent}></img>
                         <textarea ref={inputEl} className={classes.framesText} placeholder="Viết bình luận..."></textarea> 
                         <i onClick={handleSenComment} style={{color:'#458ea7',marginTop:'auto',marginLeft:'-36px',cursor:'pointer',paddingBottom:'12px',fontSize:'20px',zIndex:'5'}} className="fas fa-paper-plane"></i>
                     </div>

@@ -198,10 +198,10 @@ function handleChangeInputSearch(e){
               <img src={iconUser} alt="logo icon user"></img>
             </li>
             <Link href="/login" passHref>
-            <li className={classes.navSignin}><a href="" className ={classes.navAuthText}>Đăng nhập </a></li>
+            <li className={classes.navSignin}><a href="#" className ={classes.navAuthText}>Đăng nhập </a></li>
             </Link>
             <Link href="/signup" passHref>
-            <li className={classes.navSignup}><a href="" className ={classes.navAuthText}>Đăng ky</a></li>
+            <li className={classes.navSignup}><a href="#" className ={classes.navAuthText}>Đăng ky</a></li>
 
             </Link>
         </ul>

@@ -144,7 +144,7 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
        }
        
              data =  data.map((temp,i)=>{
-                return(
+                return( 
                     <div key={temp._id} className={classes.itemQuestion}>
                         <ul key ={nanoid(11)} className={classes.headerQuestion} >
                             <li key={nanoid(7)} className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={temp.userId.avatar !== "" ? temp.userId.avatar:anhvip2} alt='avatarUser'></img></li>

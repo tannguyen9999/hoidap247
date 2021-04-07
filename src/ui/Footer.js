@@ -11,14 +11,14 @@ const Footer = ({classes})=>{
     return(<div className={classes.footer}>
         <div className={classes.overFooter}>
             <div className={classes.aboutCompany}>
-                <img src={company} className={classes.imaCom}></img>
+                <img src={company} alt="Company" className={classes.imaCom}></img>
                 <span>Cơ quan chủ quản: Công ty Cổ phần Công nghệ Giáo dục Thành Phát</span>
                 <div className={classes.social1}>
                     <div className={classes.logoSocial}>
-                    <img src={facebook} className={classes.social}></img>
+                    <img src={facebook} alt="facebook" className={classes.social}></img>
                     </div>
                     <div className={classes.logoSocial}>
-                    <img src={youtube} className={classes.social}></img>
+                    <img src={youtube} alt="youtube" className={classes.social}></img>
                     </div>
                 </div>
             </div>

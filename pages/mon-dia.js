@@ -10,7 +10,20 @@ const Home = ({isLogin ,name,startDay,avatar,result, }) => {
     return (
     <div style={{background:'#ECEFF1'}}>
        <Head>
-        <title>Hoidap247.com - Hỏi đáp bài tập nhanh, chính xác, miễn phí</title>
+       <title key="title">
+        Hoidap247.com - Hỏi đáp bài tập nhanh, chính xác, miễn phí
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Cutting-edge custom software development with gorgeous designs from scratch - let us optimize your business, solving problems instead of creating new ones."
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | Custom Software Development"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/customsoftware" />
         
       </Head>
   

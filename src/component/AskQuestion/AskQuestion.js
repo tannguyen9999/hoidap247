@@ -26,8 +26,8 @@ const AskQuestion = ({classes})=>{
       <Link href="/askquestion" passHref >
             <div className={classes.addQuestion} onClick={handleToQuestion}>
             <div className={classes.addText}><strong>Đặt câu hỏi</strong></div>
-            <img src={arrow2} className={classes.arrow2}></img>
-            <div style={{height:'36px'}} className={classes.addLayout}><img src={iconAdd} className={classes.iconAdd} ></img></div>
+            <img src={arrow2} className={classes.arrow2} alt="arrow"></img>
+            <div style={{height:'36px'}} className={classes.addLayout}><img src={iconAdd} alt="iconAdd" className={classes.iconAdd} ></img></div>
         </div>
       </Link>
         

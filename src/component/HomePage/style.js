@@ -192,6 +192,7 @@ const styles = () =>{
         },
         arrow1:{
             width: '15px',
+            height:'auto',
             paddingLeft: '2px'
         },
     })

@@ -3,12 +3,53 @@ import { useRouter } from 'next/router'
 import productApi from "../../src/api/productApi"
 import Err from "../../src/component/Error/Error"
 import cookies from 'next-cookies'
+import Head from "next/head";
 
 const Ques = ({result,isLogin,result2,avatar})=>{
     if(!result){
-        return <Err></Err>
+        return(
+          <div>
+            <Head>
+        <title key="title">
+        Hoidap247.com - Hỏi đáp bài tập nhanh, chính xác, miễn phí
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Cutting-edge custom software development with gorgeous designs from scratch - let us optimize your business, solving problems instead of creating new ones."
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | Custom Software Development"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/customsoftware" />
+        
+      </Head>
+      <Err></Err>
+
+          </div>
+        ) 
+        
     }
     return(<div>
+        <Head>
+        <title key="title">
+        {result.content}
+        </title>
+        <meta
+          name="description"
+          key="description"
+          content="Cutting-edge custom software development with gorgeous designs from scratch - let us optimize your business, solving problems instead of creating new ones."
+        />
+        <meta
+          property="og:title"
+          content="Bringing West Coast Technology to the Midwest | Custom Software Development"
+          key="og:title"
+        />
+        <meta property="og:url" key="og:url" content="arc.com/customsoftware" />
+        
+      </Head>
         <Question isLogin={isLogin} result={result} result2={result2} avatar={avatar}></Question>
     </div>)
 }

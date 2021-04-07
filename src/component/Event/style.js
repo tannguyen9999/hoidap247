@@ -44,6 +44,7 @@ const styles = () =>{
         },
         game:{
             width:'100%',
+            height: 'auto',
             marginBottom:'12px'
         },
         contact:{
