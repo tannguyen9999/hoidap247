@@ -128,9 +128,7 @@ const styles = () =>{
             borderRadius:'5px',
             overflow:'hidden',
             marginBottom:'10px',
-            ['@media (max-width:1022px)']: {
-                borderRadius:'25px',
-            },
+            
         },
         headerQuestion:{
             listStyle:'none',

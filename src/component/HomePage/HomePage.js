@@ -12,8 +12,8 @@ import productApi from '../../api/productApi'
 import contentSlideBar from '../../util/Contants/contentSlideBar'
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
-
-
+import Lottie from "react-lottie";
+import comment from '../../assets/animation/comment.json'
 
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
@@ -41,7 +41,14 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
     const [dataFetch1,setDataFetch1] = useState([])
     const [contract,setContract] = useState(true)
 
-
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: comment,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice"
+        }
+      };
 
     useEffect(() => {
         // action on update of movies
@@ -74,7 +81,7 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
         
         
     },);
-
+   
     const handleListClass = ()=>{
         const data =  listClass.map((item,index)=>{
             return(
@@ -87,6 +94,7 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
         
     }
     const handleDta1 = (text,id)=>{
+        
         let textChange = text.split("↵")
 
         const data =  textChange.map((temp,i)=>{
@@ -146,11 +154,24 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
                             timeAgo.format(new Date(temp.createdAt), 'round')
                             }</li>
                         </ul>
-                        <div key = {nanoid(9)} className={classes.textQuestion} >    
+                        <div key = {nanoid(9)} className={classes.textQuestion} > 
+                        
     
                         {handleDta1(temp.content,temp._id)}
                         </div>
-                        <a key={nanoid(8)} className={classes.replayButton}>Trả lời</a>
+                        <Lottie
+                key={nanoid(10)}  
+        options={defaultOptions}
+        style={{ 
+        width: "25px",
+        marginLeft: '53px',
+        display: 'inline-block',
+            background:`url(${anhvip2}) top center / cover no-repeat`,
+        
+}}
+></Lottie>
+                        
+                        <a href={`/cauhoi/${temp._id}`} key={nanoid(8)} className={classes.replayButton}>Trả lời</a>
                     </div>
                 )
             })

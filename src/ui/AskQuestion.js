@@ -5,14 +5,12 @@ import listClass from "../util/Contants/listClass";
 import listSubject from "../util/Contants/contentSlideBar"
 import React, { useState, useRef,useEffect } from 'react';
 import image from "../assets/images/icon-recipe3.png";
-import imagetem from "../assets/images/anh1.jpg"
-import {UploadAvatar} from "../util/test"
 import { isLoading } from './../app/loadingSile';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import productApi from '../api/productApi'
 import { useRouter } from 'next/router'
+import {removeCookie} from '../util/cookies'
 const AskQuestion = ({classes})=> {
     const [currentClass,setCurrentClass] = useState('Chọn lớp')
     const [currentSub,setCurrentSub] = useState('Chọn môn')
@@ -187,12 +185,18 @@ const AskQuestion = ({classes})=> {
         }
         
         const res = await productApi.uploadpost(datasend)
-        console.log(res)
         const id = res.post._id;
         router.push(`/cauhoi/${id}`)
 
        } catch (error) {
            console.log(error)
+           removeCookie('avatar');
+           removeCookie('token');
+           removeCookie('name');
+           removeCookie('startDay')
+           removeCookie('birthDay')
+           removeCookie('sex')
+
         router.push(`/login`)
 
        }
