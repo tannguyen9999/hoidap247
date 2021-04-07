@@ -38,8 +38,12 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
     }
     function handleRenderTextComment(text){
 
+        let text1 = text.replaceAll("<p>","")
+
+        text1 = text1.replaceAll("</p>","")
         
-        let test = text.split("↵")
+        
+        let test = text1.split("↵")
         const res =  test.map((item)=>{
             return(
                 <div key={nanoid(10)}>{item}<br/></div>
