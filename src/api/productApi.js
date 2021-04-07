@@ -42,6 +42,10 @@ const productApi = {
     const url = `/post/${id}`;
     return GET({ url });
   },
+  getCrawDataById: (id) => {
+    const url = `/post/crawl/${id}`;
+    return GET({ url });
+  },
   getCommentByPostId: (id) => {
     const url = `/comment/${id}`;
     return GET({ url });

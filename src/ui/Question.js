@@ -12,6 +12,8 @@ import vi from 'javascript-time-ago/locale/vi';
 import productApi from '../api/productApi'
 import { useRouter } from 'next/router'
 import { nanoid } from 'nanoid';
+import { Markup } from 'interweave';
+
 
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
@@ -38,15 +40,15 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
     }
     function handleRenderTextComment(text){
 
-        let text1 = text.replaceAll("<p>","")
-
-        text1 = text1.replaceAll("</p>","")
+       
         
-        
-        let test = text1.split("↵")
+        let test = text.split("↵")
         const res =  test.map((item)=>{
             return(
-                <div key={nanoid(10)}>{item}<br/></div>
+                <div key={nanoid(10)}>
+                 <Markup key={nanoid(7)} content={item} /><br/>
+                </div>
+               
             )
         })
 

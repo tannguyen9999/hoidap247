@@ -21,6 +21,7 @@
     "fs-extra": "^8.1.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.1.0",
+    "interweave": "^12.7.1",
     "isomorphic-fetch": "^3.0.0",
     "javascript-time-ago": "^2.3.4",
     "js-cookie": "^2.2.1",

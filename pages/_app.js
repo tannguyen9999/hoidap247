@@ -11,7 +11,7 @@ import store from '../src/app/store';
 import Loading from '../src/component/Loading/Loading'
 
 
-function MyApp({ Component, pageProps,isLogin,idAudth,name,startDay}) {
+function MyApp({ Component, pageProps,isLogin,idAudth,name,startDay,idcrawl}) {
   return (
     <Provider store={store}>
     <React.Fragment>
@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps,isLogin,idAudth,name,startDay}) {
       </Head>
      
       <ThemeProvider theme = {Theme}>
-      <Header isAudth={idAudth} isLog={isLogin} isName={name} isStartDay = {startDay}></Header>
+      <Header idcrawl={idcrawl} isAudth={idAudth} isLog={isLogin} isName={name} isStartDay = {startDay}></Header>
         <Component
           {...pageProps}
         />
@@ -42,6 +42,8 @@ function MyApp({ Component, pageProps,isLogin,idAudth,name,startDay}) {
 
 MyApp.getInitialProps = async ({ Component, ctx}) => {
   const idAuth = ctx?.pathname == '/login' || ctx?.pathname == '/signup' ? true:false ;
+  const idcrawl = ctx?.pathname == '/crawl/[id]'  ? true:false ;
+
 
   const allCookies = cookies(ctx);
   let isLogin = false;
@@ -59,6 +61,7 @@ MyApp.getInitialProps = async ({ Component, ctx}) => {
     idAudth:idAuth,
     name:name,
     startDay:startDay,
+    idcrawl:idcrawl,
     pageProps: {
       ...(Component.getInitialProps
         ? await Component.getInitialProps(ctx)

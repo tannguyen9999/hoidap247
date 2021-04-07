@@ -23,7 +23,7 @@ import Link from 'next/link'
 
 
 
-const ButtonAppBar = ({ classes,isLog,isAudth,isName,isStartDay })=> {
+const ButtonAppBar = ({ classes,isLog,isAudth,isName,isStartDay,idcrawl })=> {
 
 
   const dispatch = useDispatch();
@@ -145,7 +145,7 @@ function handleChangeInputSearch(e){
   return
 }
   return (
-    <div  className ={classes.header}>
+    <div style={idcrawl?{display:'none'}:{}} className ={classes.header}>
         <div className={classes.center}>
           <Link href="/" passHref>
           <div className={classes.logo} onClick={handleLoading}></div>

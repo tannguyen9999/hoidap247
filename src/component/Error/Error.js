@@ -15,7 +15,7 @@ const Error = ()=>{
         <div style={{marginBottom:'-25px',marginTop:'100px',}}>
         <Lottie  
             options={defaultOptions}
-            isStopped={true}
+           
             style={{ width: "40%"}}
         ></Lottie>
         </div>
