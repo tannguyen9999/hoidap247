@@ -48,10 +48,12 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
        let text4 = text3.replaceAll("}\\\\","\\\\")
        let text5 = text4.replaceAll("text{","")
        let text6 = text5.replaceAll("\end{array}$","")
+       let text7 = text6.replaceAll("↵","<br/>")
+
        
 
 
-       let texta = text6.split("\\\\");
+       let texta = text7.split("\\\\");
 
 
 
