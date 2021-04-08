@@ -40,14 +40,32 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
     }
     function handleRenderTextComment(text){
 
+       let text1 = text.replaceAll("\\rm","");
+       let text2= text1.replaceAll("qquad","")
+
+       let text2a= text2.replaceAll("quad","")
+       let text3 = text2a.replaceAll("$\\begin{array}{l}\\text{","")
+       let text4 = text3.replaceAll("}\\\\","\\\\")
+       let text5 = text4.replaceAll("text{","")
+       let text6 = text5.replaceAll("\end{array}$","")
        
+
+
+       let texta = text6.split("\\\\");
+
+
+
+
         
-        let test = text.split("↵")
-        const res =  test.map((item)=>{
+    
+        const res =  texta.map((item)=>{
+            const itemm = "`"+item+"`"
             return(
                 <div key={nanoid(10)}>
-                 <Markup key={nanoid(7)} content={item} /><br/>
+                 <Markup key={nanoid(7)} content={itemm} /><br/>
+                 
                 </div>
+                
                
             )
         })
@@ -89,9 +107,11 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
                     </div>
                     <div key={nanoid(7)} style={{paddingLeft: '45px',width:'90%',wordWrap: 'break-word'}}>
                         {handleRenderTextComment(item.contentComment)}
-                        
+
+
     
                     </div>
+]
                 </div>
             )
         })
