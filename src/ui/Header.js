@@ -184,10 +184,10 @@ function handleChangeInputSearch(e){
             <div className={classes.navSidebar2}>
             <h4 className = {classes.textHeader2}>Hãy đăng nhập hoặc tạo tài khoản miễn phí!</h4>
             <Link href="/login" passHref>
-            <button className={classes.buttonSignin}>Đăng nhập</button>
+            <button onClick={handleLoading} className={classes.buttonSignin}>Đăng nhập</button>
             </Link>
             <Link href="/signup" passHref>
-            <button className={classes.buttonSignup}>Đăng ky</button>
+            <button onClick={handleLoading} className={classes.buttonSignup}>Đăng ky</button>
 
             </Link>
             </div>
@@ -198,10 +198,10 @@ function handleChangeInputSearch(e){
               <img src={iconUser} alt="logo icon user"></img>
             </li>
             <Link href="/login" passHref>
-            <li className={classes.navSignin}><a href="#" className ={classes.navAuthText}>Đăng nhập </a></li>
+            <li onClick={handleLoading} className={classes.navSignin}><a href="#" className ={classes.navAuthText}>Đăng nhập </a></li>
             </Link>
             <Link href="/signup" passHref>
-            <li className={classes.navSignup}><a href="#" className ={classes.navAuthText}>Đăng ky</a></li>
+            <li onClick={handleLoading} className={classes.navSignup}><a href="#" className ={classes.navAuthText}>Đăng ky</a></li>
 
             </Link>
         </ul>

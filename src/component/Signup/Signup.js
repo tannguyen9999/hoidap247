@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,7 +14,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import productApi from '../../api/productApi'
 import { useRouter } from 'next/router'
-
+import { useDispatch } from 'react-redux';
+import { isLoading } from './../../app/loadingSile';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -43,7 +44,15 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    const changeIsLoading2 = {
+      isLoading: false
+    };
+  const action2 = isLoading(changeIsLoading2);
+  dispatch(action2);
+  });
   async function handleSubmit(event) {
     event.preventDefault();
     const data = {

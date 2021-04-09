@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,8 +16,8 @@ import Link from 'next/link'
 import productApi from '../../api/productApi'
 import { useRouter } from 'next/router'
 import {setCookie} from '../../util/cookies'
-import redirect from 'nextjs-redirect'
-
+import { useDispatch } from 'react-redux';
+import { isLoading } from './../../app/loadingSile';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +45,15 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const classes = useStyles();
   const router = useRouter()
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    const changeIsLoading2 = {
+      isLoading: false
+    };
+  const action2 = isLoading(changeIsLoading2);
+  dispatch(action2);
+  });
 
   async function handleSubmit(event) {
     event.preventDefault();

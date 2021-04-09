@@ -11,6 +11,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import productApi from '../api/productApi'
 import { useRouter } from 'next/router'
 import {removeCookie} from '../util/cookies'
+
 const AskQuestion = ({classes})=> {
     const [currentClass,setCurrentClass] = useState('Chọn lớp')
     const [currentSub,setCurrentSub] = useState('Chọn môn')
@@ -35,7 +36,17 @@ const AskQuestion = ({classes})=> {
         const action2 = isLoading(changeIsLoading2);
         dispatch(action2);
       });
-    
+  
+      function handleToQuestion(){
+          
+              const changeIsLoading = {
+                  isLoading: true
+                };
+              const action = isLoading(changeIsLoading);
+              dispatch(action);
+         
+          
+      }
 
     function handleInputImage(){
         if(imageInput.src !== ''){
@@ -51,6 +62,7 @@ const AskQuestion = ({classes})=> {
         return
     }
     function handleOpenClose(){
+        
         setNav(
             {
             class: false,
@@ -168,6 +180,7 @@ const AskQuestion = ({classes})=> {
         let url=""
         
        try {
+        handleToQuestion()
         if(file){
             const form = new FormData();
                     form.append('picture', file);
