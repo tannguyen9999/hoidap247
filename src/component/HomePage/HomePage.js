@@ -42,6 +42,7 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
     const [dataMap,setDataMap] = useState([])
     const [dataFetch1,setDataFetch1] = useState([])
     const [contract,setContract] = useState(true)
+    const dispatch = useDispatch();
 
     const defaultOptions = {
         loop: true,
@@ -51,7 +52,6 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
           preserveAspectRatio: "xMidYMid slice"
         }
       };
-      const dispatch = useDispatch();
   
       function handleToQuestion(){
           

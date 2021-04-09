@@ -13,7 +13,8 @@ import productApi from '../api/productApi'
 import { useRouter } from 'next/router'
 import { nanoid } from 'nanoid';
 import { Markup } from 'interweave';
-
+import { useDispatch } from 'react-redux';
+import { isLoading } from './../app/loadingSile';
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
 
@@ -23,10 +24,18 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
 
     const inputEl = useRef(null);
     const [heighta,setHeighta]= useState('');
+    const dispatch = useDispatch();
+
     useEffect(() => {
         setHeighta('auto')
       }),[];
-
+      useEffect(() => {
+        const changeIsLoading2 = {
+          isLoading: false
+        };
+      const action2 = isLoading(changeIsLoading2);
+      dispatch(action2);
+      });
     function handleRenderTextMain(){
 
         let text = result.content;
