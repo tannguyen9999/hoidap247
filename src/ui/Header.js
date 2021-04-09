@@ -133,6 +133,7 @@ function handleLoading(){
 }
 function handleSearch(){
   if(valueInputSearch !== ''){
+    handleLoading()
     const content = valueInputSearch.replaceAll('\n','↵');
     router.push(`/search/${content}`)
     return
@@ -157,6 +158,7 @@ function handleChangeInputSearch(e){
             <input value={valueInputSearch} onKeyPress={event => {
                 if (event.key === 'Enter') {
                   if(valueInputSearch !== ''){
+                    handleLoading();
                   const content = valueInputSearch.replaceAll('\n','↵');
 
                     router.push(`/search/${content}`)
