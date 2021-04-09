@@ -36,8 +36,8 @@ const Ques = ({result,isLogin,result2,avatar})=>{
           </div>
         ) 
         
-    }
-    return(<div>
+    }else{
+      return(<div>
         <Head>
         <title key="title">
         {result.content}
@@ -60,6 +60,8 @@ const Ques = ({result,isLogin,result2,avatar})=>{
         <Question isLogin={isLogin} result={result} result2={result2} avatar={avatar}></Question>
     </div>)
 }
+    }
+    
 
 Ques.getInitialProps = async (ctx) => {
     const id = ctx?.query.id ;
