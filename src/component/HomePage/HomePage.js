@@ -11,9 +11,12 @@ import vi from 'javascript-time-ago/locale/vi';
 import productApi from '../../api/productApi'
 import contentSlideBar from '../../util/Contants/contentSlideBar'
 import { nanoid } from 'nanoid'
-import { useRouter } from 'next/router'
 import Lottie from "react-lottie";
 import comment from '../../assets/animation/comment.json'
+import Link from 'next/link'
+import { isLoading } from './../../app/loadingSile';
+
+import { useDispatch } from 'react-redux';
 
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
@@ -23,7 +26,6 @@ let limit = 10;
 
 
 const Submenu = ({classes,isResult,isActive,isSearch})=>{
-    const router = useRouter()
     const [openNav,setOpenNav] = useState({
         openStatus:false,
         openClass:false,
@@ -49,6 +51,18 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
           preserveAspectRatio: "xMidYMid slice"
         }
       };
+      const dispatch = useDispatch();
+  
+      function handleToQuestion(){
+          
+              const changeIsLoading = {
+                  isLoading: true
+                };
+              const action = isLoading(changeIsLoading);
+              dispatch(action);
+         
+          
+      }
 
     useEffect(() => {
         // action on update of movies
@@ -103,12 +117,14 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
             )
         })
         return (
-            <div key={nanoid(10)} onClick={()=>{
-                window.open(`/cauhoi/${id}`)}}>
-               
+            <Link key={nanoid(10)} href={`/cauhoi/${id}`}>
+      
+                <div key={nanoid(8)} onClick={handleToQuestion}>
                 {data}
+                </div>
             
-            </div>
+            </Link>
+            
         )
         
     }
