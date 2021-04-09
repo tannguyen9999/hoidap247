@@ -112,9 +112,7 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
                         <strong key={nanoid(7)} style={{paddingLeft:'12px'}}>{item.userCommentId.name}</strong>
                     </div>
                     <div  key={nanoid(7)} style={{paddingLeft: '45px',width:'90%',wordWrap: 'break-word',height:heighta}}>
-                    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+                    
 
                         {handleRenderTextComment(item.contentComment)}
 
