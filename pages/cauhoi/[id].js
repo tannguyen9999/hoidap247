@@ -63,7 +63,7 @@ const Ques = ({result,isLogin,result2,avatar})=>{
 }
 
 Ques.getInitialProps = async (ctx) => {
-    const id = ctx?.query.id ;
+    let id  ;
     const allCookies = cookies(ctx);
     let isLogin = false; 
     const name = allCookies.name; 
@@ -76,18 +76,22 @@ Ques.getInitialProps = async (ctx) => {
 
     let result
     let result2
-    try {
-    //   const res = await productApi.getPostById(id)
-      const res = await Promise.all(
-        [
-            productApi.getPostById(id),
-            productApi.getCommentByPostId(id)
-        ]) 
-      result = res[0].post,
-      result2= res[1].comments
-    } catch (error) {
-      
+    if (ctx.req){
+      id = ctx?.query.id;
+      try {
+        //   const res = await productApi.getPostById(id)
+          const res = await Promise.all(
+            [
+                productApi.getPostById(id),
+                productApi.getCommentByPostId(id)
+            ]) 
+          result = res[0].post,
+          result2= res[1].comments
+        } catch (error) {
+          
+        }   
     }
+   
   
   
       return {
