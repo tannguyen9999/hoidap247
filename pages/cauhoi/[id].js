@@ -53,11 +53,9 @@ const Ques = ({result,isLogin,result2,avatar})=>{
           key="og:title"
         />
         <meta property="og:url" key="og:url" content="arc.com/customsoftware" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
      
       </Head>
-      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+  
         <Question isLogin={isLogin} result={result} result2={result2} avatar={avatar}></Question>
     </div>)
 }
