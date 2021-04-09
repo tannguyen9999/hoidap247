@@ -56,16 +56,14 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
      function handleRenderTextComment(text){
 
         
-        let text2 = text;
-        let data =  text2.split("↵")
-        let res = data.map((item)=>{
-            return(
-                <Markup key={nanoid(7)} content={item} />  
-           )
-        })
+        let text2 =  handleTextArray(text);
+        text2.replaceAll("↵","<br/>")
 
-        return res
-            
+            return(
+                <Markup key={nanoid(7)} content={text2} />
+               
+              
+           )
         
             
         
