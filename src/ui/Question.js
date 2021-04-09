@@ -50,13 +50,16 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
             
 
            return b
-        }
+        }else{
         return textab
+
+        }
     }
      function handleRenderTextComment(text){
 
         
-        let text2 = text
+        let text1 = text
+        let text2 = handleTextArray(text1)
         let test = text2.split("↵")
         const res = test.map((item)=>{
             
