@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef,useEffect } from 'react';
 
 import {withStyles} from '@material-ui/core';
 import styles from "../styles/question"
@@ -14,7 +14,6 @@ import { useRouter } from 'next/router'
 import { nanoid } from 'nanoid';
 import { Markup } from 'interweave';
 
-
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
 
@@ -23,6 +22,10 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
     const router = useRouter()
 
     const inputEl = useRef(null);
+    const [heighta,setHeighta]= useState('');
+    useEffect(() => {
+        setHeighta('auto')
+      }),[];
 
     function handleRenderTextMain(){
 
@@ -38,41 +41,34 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
         return res
 
     }
-    function handleRenderTextComment(text){
+    const handleTextArray = (text)=>{
+        let textab = text
+        let res = String.fromCharCode(92);
+        if(text.search("begin{array}") > 0){
+            let b = textab.replace(/\\/g, res)
+            
+            
 
-       let text1 = text.replaceAll("\\rm","");
-       let text2= text1.replaceAll("qquad","")
-
-       let text2a= text2.replaceAll("quad","")
-       let text3 = text2a.replaceAll("$\\begin{array}{l}\\text{","")
-       let text4 = text3.replaceAll("}\\\\","\\\\")
-       let text5 = text4.replaceAll("text{","")
-       let text6 = text5.replaceAll("\end{array}$","")
-       let text7 = text6.replaceAll("↵","<br/>")
-
-       
-
-
-       let texta = text7.split("\\\\");
-
-
-
+           return b
+        }
+        return textab
+    }
+     function handleRenderTextComment(text){
 
         
-    
-        const res =  texta.map((item)=>{
-            const itemm = "`"+item+"`"
-            return(
-                <div key={nanoid(10)}>
-                 <Markup key={nanoid(7)} content={itemm} /><br/>
-                 
-                </div>
-                
-               
-            )
-        })
+        let text2 =  handleTextArray(text);
+        text2.replaceAll("↵","<br/>")
 
-        return res
+            return(
+                <Markup key={nanoid(7)} content={text2} />
+               
+              
+           )
+        
+            
+        
+
+        
 
     }
 
@@ -107,13 +103,13 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
                         <img alt="avatar UserCm" key={nanoid(7)} src={item.userCommentId.avatar !==''? item.userCommentId.avatar:anhvip} className = {classes.avatarCurrent}></img>
                         <strong key={nanoid(7)} style={{paddingLeft:'12px'}}>{item.userCommentId.name}</strong>
                     </div>
-                    <div key={nanoid(7)} style={{paddingLeft: '45px',width:'90%',wordWrap: 'break-word'}}>
+                    <div  key={nanoid(7)} style={{paddingLeft: '45px',width:'90%',wordWrap: 'break-word',height:heighta}}>
                         {handleRenderTextComment(item.contentComment)}
 
 
     
                     </div>
-]
+
                 </div>
             )
         })
