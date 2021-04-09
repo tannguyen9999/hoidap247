@@ -15,6 +15,7 @@ module.exports = withPlugins([
       withImages,
       env: {
         api: 'https://hocgioi.herokuapp.com/api',
+        
       },
 
       
