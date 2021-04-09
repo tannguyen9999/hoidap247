@@ -57,13 +57,15 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
 
         
         let text2 = text;
-        text2.replaceAll("↵","<br/>")
-
+        let data =  text2.split("↵")
+        let res = data.map((item)=>{
             return(
-                <Markup key={nanoid(7)} content={text2} />
-               
-              
+                <Markup key={nanoid(7)} content={item} />  
            )
+        })
+
+        return res
+            
         
             
         
