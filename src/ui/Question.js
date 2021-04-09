@@ -56,20 +56,16 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
      function handleRenderTextComment(text){
 
         
-        let text2 =  handleTextArray(text);
-        text2.replaceAll("↵","<br/>")
-
-            return(
-                <Markup key={nanoid(7)} content={text2} />
-               
-              
-           )
-        
+        let text2 = text
+        let test = text2.split("↵")
+        const res = test.map((item)=>{
             
-        
+            return(
+                <Markup key={nanoid(7)} content={item} />             
+           )
+        })
 
-        
-
+        return res
     }
 
     function hanldelRenderSection1(){
