@@ -27,7 +27,7 @@ const MainBoard = ({ classes,isActive,isName,isStartDay,isLogin,isAvatar,isResul
       };
     const action2 = isLoading(changeIsLoading2);
     dispatch(action2);
-    });
+    }); 
   
        
             

@@ -186,7 +186,7 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
 }}
 ></Lottie>
                         
-                        <a href={`/cauhoi/${temp._id}`} key={nanoid(8)} className={classes.replayButton}>Trả lời</a>
+                        <a href={`/cauhoi/${temp._id}`} onClick={handleToQuestion} key={nanoid(8)} className={classes.replayButton}>Trả lời</a>
                     </div>
                 )
             })
