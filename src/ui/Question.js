@@ -56,7 +56,7 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
      function handleRenderTextComment(text){
 
         
-        let text2 =  handleTextArray(text);
+        let text2 = text;
         text2.replaceAll("↵","<br/>")
 
             return(
