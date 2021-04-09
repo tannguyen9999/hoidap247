@@ -103,8 +103,8 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
             )
         })
         return (
-            <div key={nanoid(10)} onClick={(e)=>{
-                router.push(`/cauhoi/${id}`)}}>
+            <div key={nanoid(10)} onClick={()=>{
+                window.open(`/cauhoi/${id}`)}}>
                
                 {data}
             
