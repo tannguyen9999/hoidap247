@@ -9,6 +9,7 @@ import cookies from 'next-cookies';
 import { Provider } from 'react-redux';
 import store from '../src/app/store';
 import Loading from '../src/component/Loading/Loading'
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 
 function MyApp({ Component, pageProps,isLogin,idAudth,name,startDay,idcrawl}) {
@@ -34,7 +35,9 @@ function MyApp({ Component, pageProps,isLogin,idAudth,name,startDay,idcrawl}) {
         <Component
           {...pageProps}
         />
-        <Footer></Footer>
+         <LazyLoadComponent threshold={400}>
+            <Footer/>
+          </LazyLoadComponent>
         <Loading></Loading>
       </ThemeProvider>
     </React.Fragment>

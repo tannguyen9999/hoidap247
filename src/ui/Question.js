@@ -15,6 +15,10 @@ import { nanoid } from 'nanoid';
 import { Markup } from 'interweave';
 import { useDispatch } from 'react-redux';
 import { isLoading } from './../app/loadingSile';
+import {
+    LazyLoadImage,
+    LazyLoadComponent
+  } from "react-lazy-load-image-component";
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
 
@@ -105,7 +109,7 @@ const Question = ({classes,result,isLogin,result2,avatar})=>{
                     </div>
                 </div>
                 <div className={classes.contentImage}>
-                    <img style={result.picture == ""?{display:'none'}:{}} src={result.picture} alt="conten Image" className={classes.contentImage2}></img>
+                    <LazyLoadImage  style={result.picture == ""?{display:'none'}:{}} src={result.picture} alt="conten Image" className={classes.contentImage2}/>
                 </div>
             </div>
         )

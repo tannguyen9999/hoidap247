@@ -18,6 +18,7 @@ import { isLoading } from './../../app/loadingSile';
 
 import { useDispatch } from 'react-redux';
 
+
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
 
@@ -162,7 +163,7 @@ const Submenu = ({classes,isResult,isActive,isSearch})=>{
                 return( 
                     <div key={temp._id} className={classes.itemQuestion}>
                         <ul key ={nanoid(11)} className={classes.headerQuestion} >
-                            <li key={nanoid(7)} className={classes.itemHeaderQuestion}><img className = {classes.avatar} src={temp.userId.avatar !== "" ? temp.userId.avatar:anhvip2} alt='avatarUser'></img></li>
+                            <li key={nanoid(7)} className={classes.itemHeaderQuestion}><img  className = {classes.avatar} src={temp.userId.avatar !== "" ? temp.userId.avatar:anhvip2} alt='avatarUser'/></li>
                             <li key={nanoid(7)} className={classes.itemHeaderQuestion}>{temp.subject}</li>
                             <li key={nanoid(7)} className={classes.itemHeaderQuestion}>{`Lớp ${temp.class}`}</li>
                             <li key={nanoid(7)} className={classes.itemHeaderQuestion}>{

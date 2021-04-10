@@ -7,6 +7,10 @@ import game2 from "../../assets/images/game2.jpg"
 import PropTypes, { func } from 'prop-types';
 import TimeAgo from 'javascript-time-ago';
 import vi from 'javascript-time-ago/locale/vi';
+import {
+    LazyLoadImage,
+    LazyLoadComponent
+  } from "react-lazy-load-image-component";
 TimeAgo.addLocale(vi);
 const timeAgo = new TimeAgo('vi-VN');
 
@@ -25,7 +29,7 @@ const Submenu = ({classes,isStartDay,isName,isLogin,isAvatar})=>{
         <div className={classes.event}>
         <div className={classes.evenSection1}>
         <div style ={isLogin?{display:"auto"}:{display:"none"}} className={classes.user}>
-            <img src={isAvatar !== ''? isAvatar :anh1} alt='avatar' className={classes.avatarUser}></img>
+            <LazyLoadImage src={isAvatar !== ''? isAvatar :anh1} alt='avatar' className={classes.avatarUser}></LazyLoadImage>
             <div className={classes.infoUser}>
                 <div><strong>{isName}</strong></div>
                 <div>Hạng: <span style={{color:'rgb(80, 157, 101)'}}>{
@@ -34,8 +38,8 @@ const Submenu = ({classes,isStartDay,isName,isLogin,isAvatar})=>{
             </div>
         </div>
         <div className={classes.advertisement}>
-            <img src={game} alt='vo lam' className={classes.game}></img>
-            <img src={game2} alt='vo lam' className={classes.game}></img>
+            <LazyLoadImage src={game} alt='vo lam' className={classes.game}></LazyLoadImage>
+            <LazyLoadImage src={game2} alt='vo lam' className={classes.game}></LazyLoadImage>
             <a href="tel:0326693535" className={classes.contact}>
                 <strong>Liên hệ đặt quảng cáo ngay:</strong>
                 <div style={{textAlign:'center',lineHeight:'60px'}}><strong>0326693535</strong>
